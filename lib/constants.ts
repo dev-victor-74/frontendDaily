@@ -1,0 +1,4 @@
+export const _30_DAYS_IN_MILLISECONDS = 2592000000;
+export const FREE_MAX_API_LIMIT_COUNT = 6;
+export const PRO_MAX_API_LIMIT_COUNT = 7;
+export const DAY_IN_MILLISECONDS = 86400000;
