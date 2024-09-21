@@ -75,7 +75,7 @@ const AuthModal = () => {
               <div className="w-full flex flex-col items-center justify-center gap-1">
                 <div className="flex items-center gap-1 flex-col">
                   <div className="text-xl md:text-2xl font-semibold md:font-bold">
-                    frontendprojects
+                    frontendDaily
                   </div>
                 </div>
                 <div className="flex flex-col">
@@ -83,7 +83,7 @@ const AuthModal = () => {
                     Welcome Back
                   </h3>
                   <p className="text-sm text-center font-medium text-neutral-900">
-                    Sign In to continue to frontendprojects
+                    Sign In to continue to frontendDaily
                   </p>
                 </div>
               </div>

@@ -9,7 +9,7 @@ const PrivacyPolicyPage = () => {
     <main className="w-full h-full px-4 py-8">
       <div className="w-full relative">
         <div className="w-full relative">
-          <div className=" absolute top-5 cursor-pointer left-2 bg-purple-300 rounded-full hover:bg-purple-200 p-2">
+          <div className=" absolute top-5 cursor-pointer left-2 bg-slate-200 rounded-full hover:bg-slate-300 p-2">
             <MoveLeft size={18} className="" onClick={() => router.back()} />
           </div>
         </div>
@@ -19,10 +19,10 @@ const PrivacyPolicyPage = () => {
       </h1>
       <div className="w-full md:w-[60%] lg:w-[50%] mx-auto mt-3 flex flex-col gap-3">
         <p className="text-sm md:text-[15px] font-semibold text-zinc-700 text-justify ">
-          Your privacy is important to us. It is FrontendCoach&apos;s policy to
+          Your privacy is important to us. It is frontendDaily&apos;s policy to
           respect your privacy regarding any information we may collect from you
-          across our website, https://frontendprojects.com, and other sites we
-          own and operate.
+          across our website, https://frontendDaily.com, and other sites we own
+          and operate.
         </p>
         <p className="text-sm md:text-[15px] font-semibold text-zinc-700 text-justify ">
           We only ask for personal information when we truly need it to provide

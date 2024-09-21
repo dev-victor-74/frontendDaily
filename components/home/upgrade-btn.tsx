@@ -27,9 +27,9 @@ const UpgradeBtn = () => {
     <Button
       onClick={onUpgrade}
       variant="custom"
-      className="flex text-xs tracking-wide items-center gap-1 rounded-sm  bg-gradient-to-r from-pink-900 to-blue-800"
+      className="flex text-xs tracking-wide items-center gap-1 rounded-sm hover:bg-gradient-to-r hover:from-orange-700 to hover:to-blue-800  bg-gradient-to-r from-orange-700 to-blue-700"
     >
-      <Zap size={16} className="text-green-600 animate-bounce" />
+      <Zap size={16} className="text-zinc-200 animate-bounce" />
       Upgrade Now!
     </Button>
   );

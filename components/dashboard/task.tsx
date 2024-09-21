@@ -30,7 +30,7 @@ const Task = ({ challenge }: TaskProps) => {
   };
 
   return (
-    <div className="w-full md:w-[95%] mx-auto gap-2 px-3 p-[5px] pt-2 ring-1 ring-[#c3b3f0] mt-5 rounded-sm flex flex-col">
+    <div className="w-full md:w-[100%] mx-auto gap-2 px-3 p-[5px] pt-2 ring-1 ring-[#c3b3f0] mt-5 rounded-sm flex flex-col">
       <h2 className=" text-sm font-semibold md:text-lg md:font-bold text-zinc-800">
         Tasks to Implement
       </h2>

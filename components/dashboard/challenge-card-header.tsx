@@ -59,7 +59,7 @@ const ChallengeCardHeader = ({
   }, [challengeId]);
 
   return (
-    <div className="w-full md:w-[95%] mx-auto flex flex-col md:flex-row items-center gap-2 p-[2px] ring-1 ring-[#c3b3f0] mt-5 rounded-sm">
+    <div className="w-full md:w-[100%] mx-auto flex flex-col md:flex-row items-center gap-2 p-[2px] ring-1 ring-[#c3b3f0] mt-5 rounded-sm">
       <div className="w-full md:w-[55%] flex items-center justify-center p-2">
         <div className="w-full relative h-[300px] sm:h-[400px] md:h-[400px] rounded-sm overflow-hidden ring-1 ring-slate-300">
           <div className=" absolute h-[300px] sm:h-[400px] md:h-[400px] w-full top-0 right-0 z-30 bg-transparent"></div>

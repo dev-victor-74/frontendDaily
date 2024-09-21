@@ -7,28 +7,28 @@ const TermsOfServicePage = () => {
   const terms = [
     {
       label: "Acceptance of terms",
-      desc: "By accessing or using the services provided by FrontendCoach, you agree to abide by these Terms and Conditions and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.",
+      desc: "By accessing or using the services provided by frontendDaily, you agree to abide by these Terms and Conditions and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.",
     },
 
     {
       label: "Use of Licence",
-      desc: "FrontendProjects grants users a limited license to access and use the materials provided on this website for personal, non-commercial transitory viewing only. This license does not include the right to modify or copy the materials, use them for any commercial purpose, or remove any copyright or other proprietary notations from the materials.",
+      desc: "frontendDaily grants users a limited license to access and use the materials provided on this website for personal, non-commercial transitory viewing only. This license does not include the right to modify or copy the materials, use them for any commercial purpose, or remove any copyright or other proprietary notations from the materials.",
     },
     {
       label: "User Account",
-      desc: "Users may be required to create an account to access certain features or services on FrontendProjects. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to provide accurate and complete information when creating an account and to update your information as necessary to keep it accurate and current.",
+      desc: "Users may be required to create an account to access certain features or services on frontendDaily. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to provide accurate and complete information when creating an account and to update your information as necessary to keep it accurate and current.",
     },
     {
       label: "User Conduct",
-      desc: "Users are prohibited from engaging in any conduct that may disrupt or interfere with the operation of FrontendCoach or the experience of other users. This includes but is not limited to uploading or transmitting any content that is unlawful, harmful, threatening, abusive, harassing, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or racially, ethnically, or otherwise objectionable",
+      desc: "Users are prohibited from engaging in any conduct that may disrupt or interfere with the operation of FrontendDaily or the experience of other users. This includes but is not limited to uploading or transmitting any content that is unlawful, harmful, threatening, abusive, harassing, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or racially, ethnically, or otherwise objectionable",
     },
     {
       label: "Intellectual Property",
-      desc: "The materials and content provided on FrontendCoach, including but not limited to text, graphics, logos, images, and software, are owned by or licensed to FrontendCoach and are protected by copyright and other intellectual property laws. Users may not reproduce, distribute, modify, transmit, display, or otherwise use any materials or content from FrontendCoach without the prior written consent of FrontendCoach.",
+      desc: "The materials and content provided on frontendDaily, including but not limited to text, graphics, logos, images, and software, are owned by or licensed to frontendDaily and are protected by copyright and other intellectual property laws. Users may not reproduce, distribute, modify, transmit, display, or otherwise use any materials or content from FrontendCoach without the prior written consent of frontendDaily.",
     },
     {
       label: "Limitation of Liability",
-      desc: "FrontendProjects and its affiliates, officers, directors, employees, agents, and licensors shall not be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in any way connected with the use of or inability to use FrontendCoach, even if FrontendCoach has been advised of the possibility of such damages.",
+      desc: "frontendDaily and its affiliates, officers, directors, employees, agents, and licensors shall not be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in any way connected with the use of or inability to use frontendDaily, even if frontendDaily has been advised of the possibility of such damages.",
     },
   ];
   const router = useRouter();

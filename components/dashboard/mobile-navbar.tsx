@@ -10,9 +10,9 @@ import {
 import { Menu } from "lucide-react";
 import Sidebar from "./sidebar";
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ count }: { count: number }) => {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center bg-white">
       <Sheet>
         <SheetTrigger asChild>
           <button className="md:hidden flex">
@@ -23,7 +23,7 @@ const MobileNavbar = () => {
           <SheetHeader>
             <SheetTitle></SheetTitle>
           </SheetHeader>
-          <Sidebar />
+          <Sidebar count={count} />
         </SheetContent>
       </Sheet>
     </div>

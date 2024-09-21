@@ -9,14 +9,14 @@ const Faq = () => {
   return (
     <div className="w-full md:w-[60%] mx-auto flex flex-col gap-2 items-center justify-center mt-10">
       <div className="w-fulll items-center justify-center">
-        <h2 className=" text-center text-2xl md:text-3xl text-zinc-900 font-bold md:font-extrabold">
+        <h2 className="text-center text-2xl md:text-3xl text-zinc-900 font-bold md:font-extrabold">
           Frequently Asked Questions
         </h2>
       </div>
       <Accordion type="single" collapsible className="w-full mt-4">
         <AccordionItem value="item-1">
           <AccordionTrigger className="text-lg text-zinc-800 font-bold">
-            what is DevCoach?
+            what is frontendDaily?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
             It is a platform to practice & build frontend projects.
@@ -24,11 +24,10 @@ const Faq = () => {
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger className="text-lg text-zinc-800 font-bold">
-            Who can use DevCoach?
+            Who can use frontendDaily?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
-            Anybody that wants to learn or advance his or her frontend
-            knowledge.
+            Anybody that wants to learn or advance their frontend knowledge.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
@@ -45,7 +44,7 @@ const Faq = () => {
             What the benefits that comes with premium membership?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
-            You get access to all the challenges and you can build upto five
+            You get access to all the challenges and you can build upto seven
             premium projects in one month.
           </AccordionContent>
         </AccordionItem>

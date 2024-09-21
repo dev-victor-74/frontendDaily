@@ -14,22 +14,26 @@ import { Button } from "../ui/button";
 
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { modalStore, useUser } from "@/lib/store/modal-store";
+import { modalStore, UseSubscription, useUser } from "@/lib/store/modal-store";
 import { useToast } from "@/hooks/use-toast";
+import { _30_DAYS_IN_MILLISECONDS } from "@/lib/constants";
+import PremiumBadge from "./premium-badge";
 
 interface dashboardNavbarProps {
   user: User | null;
+  count: number;
 }
 
-const DashboardNavbar = ({ user }: dashboardNavbarProps) => {
+const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
+  const { subscription } = UseSubscription();
   const supabase = createClient();
   const router = useRouter();
   const onLogout = useUser((state) => state.onLogout);
   const { onOpen } = modalStore();
+  const { toast } = useToast();
 
   const logout = async () => {
     const { error } = await supabase.auth.signOut();
-    const { toast } = useToast();
 
     if (error) {
       toast({
@@ -43,13 +47,28 @@ const DashboardNavbar = ({ user }: dashboardNavbarProps) => {
     }
   };
 
+  const isPro =
+    (subscription &&
+      subscription.status === "active" &&
+      new Date(subscription.next_payment_date as string).getTime() >
+        Date.now()) ||
+    ((subscription?.status === "cancelled" ||
+      subscription?.status === "non-renewing") &&
+      new Date().getTime() - new Date(subscription.createdAt).getTime() <=
+        _30_DAYS_IN_MILLISECONDS);
+
   return (
     <div className="w-full h-[55px] py-2 border-b border-[#e5e1f0] flex items-center justify-between">
       <div className="w-full flex">
-        <MobileNavbar />
+        <MobileNavbar count={count} />
       </div>
 
-      <div className="w-full flex items-center justify-end md:px-2">
+      <div className="w-full flex items-center justify-end md:px-1">
+        {isPro ? (
+          <div className=" flex items-center justify-center mr-2">
+            <PremiumBadge />
+          </div>
+        ) : null}
         <Popover>
           <PopoverTrigger asChild>
             {user ? (

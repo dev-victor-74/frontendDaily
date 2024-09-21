@@ -15,7 +15,11 @@ const SingleChallengeContent = ({ data, id }: SingleChallengeContentProps) => {
       <ChallengeCardHeader challenge={data} challengeId={id} />
 
       {data?.challenge_pages && data?.challenge_pages.length ? (
-        <ChallengeContent data={data?.challenge_pages} />
+        <ChallengeContent
+          data={data?.challenge_pages}
+          challengeType={data.type}
+          challengeName={data.name}
+        />
       ) : null}
       <Task challenge={data} />
     </div>

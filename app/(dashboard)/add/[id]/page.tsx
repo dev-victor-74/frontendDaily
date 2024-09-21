@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { createClient } from "@/utils/supabase/client";
 import { ArrowBigLeft, Loader2, UploadCloud } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -17,10 +17,10 @@ interface SingleAddPageProps {
 
 const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
   const router = useRouter();
-  console.log(id);
 
   const supabase = createClient();
   const [loading, setLoading] = useState<boolean>(false);
+  const { toast } = useToast();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
@@ -52,8 +52,6 @@ const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
       const designFileUrl =
         process.env.NEXT_PUBLIC_BASE_DESIGN_FILE_URL + designFile.name;
 
-      console.log(designFileUrl, designData);
-
       const { data: displayData, error: displayError } = await supabase.storage
         .from("images")
         .upload(displayFile.name, displayFile, {
@@ -65,8 +63,6 @@ const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
 
       const displayFileUrl =
         process.env.NEXT_PUBLIC_BASE_DISPLAY_FILE_URL + displayFile.name;
-
-      console.log(displayFileUrl, displayData);
 
       const challengeData = {
         name: values.name,
@@ -148,8 +144,8 @@ const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
             </div>
           </div>
           <Button
-            variant="ghost"
-            className="bg-purple-500 hover:bg-purple-400 flex items-center justify-center"
+            variant="custom"
+            className="flex items-center justify-center"
             type="submit"
           >
             {loading ? (

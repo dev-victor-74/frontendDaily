@@ -19,7 +19,6 @@ import {
 } from "@/utils/actions/apilimit";
 import {
   _30_DAYS_IN_MILLISECONDS,
-  DAY_IN_MILLISECONDS,
   FREE_MAX_API_LIMIT_COUNT,
   PRO_MAX_API_LIMIT_COUNT,
 } from "@/lib/constants";
@@ -49,8 +48,6 @@ const DownloadButton = ({
 
   const [loading, setLoading] = useState(false);
 
-  // const next_payment_date = new Date(subscription?.next_payment_date as string);
-
   const isPro =
     (subscription &&
       subscription.status === "active" &&
@@ -60,8 +57,6 @@ const DownloadButton = ({
       subscription?.status === "non-renewing") &&
       new Date().getTime() - new Date(subscription.createdAt).getTime() <=
         _30_DAYS_IN_MILLISECONDS);
-
-  console.log(isPro);
 
   const validateDownload = async (status: string) => {
     if (!user) return onOpen("auth-modal");

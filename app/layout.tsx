@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import ModalProvider from "@/components/providers/modal-provider";
 import UserProvider from "@/components/providers/UserProvider";
+import TanstackQueryClientProvider from "@/components/providers/query-client-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,10 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={geistSans.className}>
-        {children}
-        <Toaster />
-        <UserProvider />
-        <ModalProvider />
+        <TanstackQueryClientProvider>
+          {children}
+          <Toaster />
+          <UserProvider />
+          <ModalProvider />
+        </TanstackQueryClientProvider>
       </body>
     </html>
   );

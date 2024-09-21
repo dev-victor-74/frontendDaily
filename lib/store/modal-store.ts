@@ -5,7 +5,8 @@ type modalType =
   | "challenge-modal"
   | "api-limit-count"
   | "pro-modal"
-  | "auth-modal";
+  | "auth-modal"
+  | "add-asset-modal";
 
 type modalStoreType = {
   type: modalType | null;

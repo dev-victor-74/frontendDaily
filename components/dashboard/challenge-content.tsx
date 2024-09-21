@@ -2,12 +2,24 @@
 
 import Image from "next/image";
 
-const ChallengeContent = ({ data }: any) => {
+interface ChallengeContentProps {
+  data: any;
+  challengeType: string;
+  challengeName: string;
+}
+
+const ChallengeContent = ({
+  data,
+  challengeType,
+  challengeName,
+}: ChallengeContentProps) => {
   return (
-    <div className="w-full md:w-[95%] mx-auto h-full mb-4 rounded-sm flex flex-col items-center p-[2px] ring-1 ring-[#c3b3f0] mt-5">
+    <div className="w-full md:w-[100%] mx-auto h-full mb-4 rounded-sm flex flex-col items-center p-[2px] ring-1 ring-[#c3b3f0] mt-5">
       <div className="w-full px-3">
         <h2 className=" text-sm font-semibold md:text-lg md:font-bold text-zinc-800 mt-1">
-          {}
+          {challengeType.toLowerCase() === "multicard"
+            ? `${challengeName} Variants`
+            : "Other Pages"}
         </h2>
       </div>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2 px-2 pb-3">

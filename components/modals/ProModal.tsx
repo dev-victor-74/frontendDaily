@@ -71,7 +71,7 @@ const ProModal = () => {
           <div className="w-full flex  flex-col gap-2">
             {premiumList.map((list, index) => (
               <div className="flex items-center gap-2" key={index}>
-                <CircleCheck size={18} className=" text-green-600" />
+                <CircleCheck size={18} className=" text-blue-600" />
                 <span className="text-[12px] md:text-sm font-medium text-neutral-600">
                   {list.label}
                 </span>
@@ -82,23 +82,23 @@ const ProModal = () => {
                 <div className=" text-sm font-semibold">Monthly</div>
                 <div className=" flex items-center gap-2">
                   <span className="text-[13px] font-medium text-neutral-600 line-through">
-                    NGN3500
+                    NGN3000
                   </span>
                   <span className="text-sm font-medium text-neutral-900">
-                    NGN1500
+                    NGN1200
                   </span>
                 </div>
               </div>
               <div className="ring-1 ring-[#d6d0e6] bg-blue-50 rounded-sm mt-2 p-2 text-[12px] font-semibold">
                 <span className="text-[14px] font-medium text-neutral-900">
-                  NGN1500
+                  NGN1200
                 </span>{" "}
                 is equivalent to{" "}
                 <span className="text-[14px] mr-[2px] font-medium text-neutral-900">
                   $1
                 </span>
                 {"  "}
-                you can check it&apos;s equivalent in your local currency.
+                you can check the equivalent in your local currency.
               </div>
             </div>
           </div>

@@ -23,7 +23,10 @@ const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
       </div>
       <div className="w-full pl-0 md:pl-[220px] h-screen pr-1">
         <div className="w-full md:w-[98%] mx-auto px-4 md:px-0">
-          <DashboardNavbar user={data?.user} />
+          <DashboardNavbar
+            user={data?.user}
+            count={apiLimit && apiLimit[0]?.count}
+          />
           {children}
         </div>
       </div>

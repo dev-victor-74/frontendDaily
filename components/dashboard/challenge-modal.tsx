@@ -50,23 +50,23 @@ export function ChallengeModal() {
           <Button
             variant="ghost"
             onClick={prev}
-            className=" fixed z-30 bg-white shadow-md top-1/2 ring-1 ring-[#dfdee4] left-[1px] rounded-full"
+            className=" fixed z-30 bg-white shadow-md top-1/2 ring-1 ring-[#a199c9] left-[1px] rounded-full"
           >
             <IoIosArrowRoundBack size={28} />
           </Button>
           <div className="w-[800px] mx-auto relative h-[300px] md:h-[450px] overflow-auto rounded-sm ring-1 ring-slate-50">
             <Image
-              height={600}
-              width={750}
+              height={700}
+              width={760}
               src={challengeData[slideIndex]?.address}
               alt={challengeData[slideIndex]?.name}
-              className=" object-contain mx-auto ring-1"
+              className=" object-contain mx-auto ring-1 ring-[#d6d3e0]"
             />
           </div>
           <Button
             variant="ghost"
             onClick={next}
-            className=" fixed z-30 bg-white top-1/2 ring-1 shadow-md ring-[#dfdee4] right-[1px] rounded-full"
+            className=" fixed z-30 bg-white top-1/2 ring-1 shadow-md ring-[#a199c9] right-[1px] rounded-full"
           >
             <IoIosArrowRoundForward size={28} />
           </Button>

@@ -54,9 +54,9 @@ const FreeLimitModal = () => {
         <DialogFooter className="w-full flex items-center justify-center">
           <Button
             onClick={() => onOpen("pro-modal")}
-            className="text-xs font-semibold text-neutral-200 flex items-center gap-1 bg-gradient-to-r from-pink-700 to-blue-700 px-2 py-2 rounded-sm "
+            className="text-xs font-semibold text-neutral-200 flex items-center gap-1 bg-gradient-to-r from-orange-700 to-blue-700 px-2 py-2 rounded-sm "
           >
-            <Zap size={12} className=" animate-bounce text-yellow-400" />
+            <Zap size={12} className=" animate-bounce text-zinc-200" />
             Go Premium
           </Button>
         </DialogFooter>

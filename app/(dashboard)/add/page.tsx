@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,12 +9,14 @@ import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { CloudUpload, Loader2 } from "lucide-react";
 import createchallenge from "@/utils/actions/createchallenge";
+import { useToast } from "@/hooks/use-toast";
 
 const AddChallengePage = () => {
   const supabase = createClient();
   const [loading, setLoading] = useState<boolean>(false);
 
   const router = useRouter();
+  const { toast } = useToast();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {

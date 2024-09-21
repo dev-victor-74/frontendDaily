@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { AiOutlineHeart } from "react-icons/ai";
+import { BiImages } from "react-icons/bi";
 import { Button } from "../ui/button";
 import { modalStore, UseSubscription, useUser } from "@/lib/store/modal-store";
 import {
@@ -14,6 +15,7 @@ import {
   PRO_MAX_API_LIMIT_COUNT,
 } from "@/lib/constants";
 import { useToast } from "@/hooks/use-toast";
+import Image from "next/image";
 
 const Sidebar = ({ count }: { count: number }) => {
   const pathname = usePathname();
@@ -22,7 +24,6 @@ const Sidebar = ({ count }: { count: number }) => {
   const { user } = useUser();
 
   const { toast } = useToast();
-  console.log(user, subscription);
   const isPro =
     (subscription &&
       subscription.status === "active" &&
@@ -45,10 +46,16 @@ const Sidebar = ({ count }: { count: number }) => {
       Icon: AiOutlineHeart,
     },
     {
+      label: "Media Assets",
+      path: "/assets",
+      Icon: BiImages,
+    },
+    {
       label: "Colors",
       path: "/colors",
       Icon: Palette,
     },
+
     {
       label: "Profile",
       path: "/profile",
@@ -109,28 +116,34 @@ const Sidebar = ({ count }: { count: number }) => {
     return onOpen("pro-modal");
   };
 
-  console.log(isPro);
+  // console.log(
+  //   new Date().getTime() - new Date(subscription?.createdAt).getTime() >=
+  //     _30_DAYS_IN_MILLISECONDS,
+  //   new Date(subscription?.createdAt).getDate()
+  // );
 
   return (
-    <div className="w-full h-full flex flex-col px-2">
-      <div className="flex items-center gap-1">
-        <div className=""></div>
+    <div className="w-full h-full flex flex-col px-2 bg-white">
+      <div className="flex items-center gap-1 mt-2">
+        <div className="w-[27px] h-[27px] relative ">
+          <Image src="/logo.png" fill alt="logo" />
+        </div>
         <div className="text-lg text-zinc-800 font-semibold md:font-bold">
           FrontendDaily
         </div>
       </div>
-      <div className="flex flex-col gap-1 mt-12">
+      <div className="flex flex-col gap-2 mt-8">
         {routes.map((route) => (
           <Link
             key={route.label}
             href={route.path}
             className={cn(
-              "w-full py-3 px-2 rounded-sm flex items-center gap-1 hover:bg-slate-200",
+              "w-full py-3 px-2 rounded-sm flex items-center gap-[6px] hover:bg-slate-200",
               route.path === pathname && "bg-slate-200"
             )}
           >
-            <route.Icon size={16} color="#555" />
-            <div className="text-xs font-semibold tracking-wider">
+            <route.Icon size={17} color="black" />
+            <div className="text-[12px] font-semibold tracking-wider">
               {route.label}
             </div>
           </Link>
@@ -139,11 +152,11 @@ const Sidebar = ({ count }: { count: number }) => {
       <div className="mt-auto w-full p-2 ring-1 shadow-sm ring-[#d9d9db] rounded-sm bg-slate-50 flex flex-col gap-1">
         {user && isPro ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
-            {count} / {PRO_MAX_API_LIMIT_COUNT}
+            {count ? count : 0} / {PRO_MAX_API_LIMIT_COUNT}
           </p>
         ) : user && !isPro ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
-            {count} / {FREE_MAX_API_LIMIT_COUNT}
+            {count ? count : 0} / {FREE_MAX_API_LIMIT_COUNT}
           </p>
         ) : (
           ""

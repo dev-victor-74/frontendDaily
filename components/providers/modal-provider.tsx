@@ -6,6 +6,7 @@ import FreeLimitModal from "../modals/FreeLimitModal";
 import ProModal from "../modals/ProModal";
 import AuthModal from "../modals/authmodal";
 import ApiLimitModal from "../modals/ApiLimitModal";
+import AssetModal from "../modals/AssetsModal";
 
 const ModalProvider = () => {
   const [mounted, setMounted] = useState(false);
@@ -22,6 +23,7 @@ const ModalProvider = () => {
       <ApiLimitModal />
       <ProModal />
       <AuthModal />
+      <AssetModal />
     </>
   );
 };
