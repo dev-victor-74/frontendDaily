@@ -49,9 +49,9 @@ const Testimonial = () => {
           {testimonials.map((testimonial) => (
             <CarouselItem key={testimonial.name}>
               <div className="p-1 ">
-                <Card className="ring-1 p-2 ring-[#d7cfee]">
-                  <CardContent className="flex aspect-square flex-col items-center justify-center h-full">
-                    <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+                <Card className="p-2">
+                  <CardContent className="flex flex-col items-center justify-center h-full">
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-3 py-5">
                       <div className=" w-full flex flex-col items-center justify-center gap-2">
                         <div className="w-[80px] h-[80px] overflow-hidden rounded-full ring-2 ring-[#542cc2] mx-auto relative">
                           <Image
@@ -61,7 +61,7 @@ const Testimonial = () => {
                             className=" object-cover"
                           />
                         </div>
-                        <div className="w-full text-sm font-semibold text-neutral-900 flex items-center justify-center">
+                        <div className="w-full text-sm font-bold text-zinc-900 flex items-center justify-center">
                           {testimonial.name}
                         </div>
                       </div>
@@ -75,8 +75,8 @@ const Testimonial = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className=" h-8 w-8 rounded-full ring-1 ring-[#8c78c2]" />
+        <CarouselNext className=" h-8 w-8 rounded-full ring-1 ring-[#8c78c2]" />
       </Carousel>
     </div>
   );

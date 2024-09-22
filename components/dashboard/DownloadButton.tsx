@@ -1,6 +1,6 @@
 "use client";
 
-import { DownloadCloud, Loader2 } from "lucide-react";
+import { Download, Loader2 } from "lucide-react";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import {
@@ -229,14 +229,14 @@ const DownloadButton = ({
       disabled={loading}
       onClick={() => validateDownload(challengeSatus)}
       variant="custom"
-      className="w-full sm:w-[70%] md:w-[40%] lg:w-[25%] flex items-center justify-center rounded-sm"
+      className="w-full sm:w-[70%] md:w-[40%] lg:w-[25%] flex items-center justify-center rounded-sm hover:scale-[1.02] transition"
     >
       {loading ? (
         <Loader2 size={18} className="animate-spin" />
       ) : (
         <div className="w-full flex items-center gap-2 justify-center">
-          <span>Get Challenge</span>
-          <DownloadCloud size={18} />
+          <span>Download</span>
+          <Download size={14} className=" text-zinc-200" />
         </div>
       )}
     </Button>

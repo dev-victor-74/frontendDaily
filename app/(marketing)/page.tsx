@@ -45,11 +45,11 @@ export default async function Home() {
             Boost your coding skill by building real life challenges
           </h1>
         </div>
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displays.map((display) => (
             <div
               key={display.label}
-              className=" flex flex-col gap-2 ring-2 shadow-sm rounded-sm p-2 ring-[#977fda]"
+              className=" flex flex-col gap-2 ring-2 shadow-sm rounded-sm p-2 ring-[#977fda] py-4"
             >
               <h2 className=" text-center text-[16px] md:text-xl font-extrabold text-zinc-900">
                 {display.label}

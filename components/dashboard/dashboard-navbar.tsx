@@ -28,7 +28,7 @@ const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
   const { subscription } = UseSubscription();
   const supabase = createClient();
   const router = useRouter();
-  const onLogout = useUser((state) => state.onLogout);
+  const { onLogout } = useUser();
   const { onOpen } = modalStore();
   const { toast } = useToast();
 
@@ -64,7 +64,7 @@ const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
       </div>
 
       <div className="w-full flex items-center justify-end md:px-1">
-        {isPro ? (
+        {isPro && user ? (
           <div className=" flex items-center justify-center mr-2">
             <PremiumBadge />
           </div>

@@ -15,7 +15,7 @@ const Faq = () => {
       </div>
       <Accordion type="single" collapsible className="w-full mt-4">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-lg text-zinc-800 font-bold">
+          <AccordionTrigger className="text-lg text-zinc-800 font-bold text-start">
             what is frontendDaily?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
@@ -23,7 +23,7 @@ const Faq = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
-          <AccordionTrigger className="text-lg text-zinc-800 font-bold">
+          <AccordionTrigger className="text-lg text-zinc-800 font-bold text-start">
             Who can use frontendDaily?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
@@ -31,7 +31,7 @@ const Faq = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
-          <AccordionTrigger className="text-lg text-zinc-800 font-bold">
+          <AccordionTrigger className="text-lg text-zinc-800 font-bold text-start">
             Can I access all the challenges?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
@@ -40,7 +40,7 @@ const Faq = () => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
-          <AccordionTrigger className="text-lg text-zinc-800 font-bold">
+          <AccordionTrigger className="text-lg text-zinc-800 font-bold text-start">
             What the benefits that comes with premium membership?
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">

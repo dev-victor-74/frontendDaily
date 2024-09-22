@@ -84,7 +84,10 @@ const AddChallengePage = () => {
       const data = await createchallenge(challengeData);
       reset();
       toast({ description: "successfully created" });
-      if (data?.[0].type.toLowerCase() === "multipage") {
+      if (
+        data?.[0].type.toLowerCase() === "multipage" ||
+        data?.[0].type.toLowerCase() === "multicard"
+      ) {
         return router.push(`/add/${data?.[0].id}`);
       }
     } catch (error) {
