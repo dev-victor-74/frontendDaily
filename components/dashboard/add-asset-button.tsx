@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { modalStore } from "@/lib/store/modal-store";
 
 const AddAssetButton = () => {
-  const { onOpen, onClose, type } = modalStore();
+  const { onOpen } = modalStore();
 
   return (
     <Button

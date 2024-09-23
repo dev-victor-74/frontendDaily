@@ -11,7 +11,7 @@ const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
 
-  const { data: apiLimit, error } = await supabase
+  const { data: apiLimit } = await supabase
     .from("user_api_limit")
     .select("*")
     .eq("user_id", data?.user?.id);

@@ -44,7 +44,7 @@ const AddChallengePage = () => {
         return toast({ description: "missing field" });
       }
 
-      const { data: designData, error: designError } = await supabase.storage
+      const { error: designError } = await supabase.storage
         .from("design")
         .upload(designFile.name, designFile, {
           cacheControl: "3600",
@@ -53,7 +53,7 @@ const AddChallengePage = () => {
 
       if (designError) return toast({ title: "Design image not uploaded" });
 
-      const { data: displayData, error: displayError } = await supabase.storage
+      const { error: displayError } = await supabase.storage
         .from("images")
         .upload(displayFile.name, displayFile, {
           cacheControl: "3600",

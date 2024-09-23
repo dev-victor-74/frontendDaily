@@ -41,7 +41,7 @@ const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
         return toast({ description: "missing field" });
       }
 
-      const { data: designData, error: designError } = await supabase.storage
+      const { error: designError } = await supabase.storage
         .from("design")
         .upload(designFile.name, designFile, {
           cacheControl: "3600",
@@ -52,7 +52,7 @@ const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
       const designFileUrl =
         process.env.NEXT_PUBLIC_BASE_DESIGN_FILE_URL + designFile.name;
 
-      const { data: displayData, error: displayError } = await supabase.storage
+      const { error: displayError } = await supabase.storage
         .from("images")
         .upload(displayFile.name, displayFile, {
           cacheControl: "3600",

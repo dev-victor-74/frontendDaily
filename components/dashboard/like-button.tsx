@@ -1,7 +1,6 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useToast } from "@/hooks/use-toast";
@@ -19,7 +18,6 @@ interface FavouriteButtonProps {
 const LikeButton = ({ challengeId }: FavouriteButtonProps) => {
   const supabase = createClient();
   const [isFavourite, setIsFavourite] = useState(false);
-  const router = useRouter();
 
   const user = useUser((state) => state.user);
   const { toast } = useToast();
@@ -52,12 +50,6 @@ const LikeButton = ({ challengeId }: FavouriteButtonProps) => {
     deleteChallenge(challengeId, user?.id);
     toast({ description: "Removed from favourites" });
   };
-
-  const IsFavourite = isFavourite ? (
-    <AiFillHeart size={18} color="#703cff" />
-  ) : (
-    <AiOutlineHeart size={18} />
-  );
 
   return (
     <div className="flex items-center justify-center">

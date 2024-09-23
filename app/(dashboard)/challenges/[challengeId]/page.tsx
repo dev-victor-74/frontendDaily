@@ -1,6 +1,5 @@
 import { getChallengeById } from "@/utils/actions/getChallengeById";
 import SingleChallengeContent from "@/components/dashboard/SingleChallengeContent";
-import { createClient } from "@/utils/supabase/server";
 
 interface SingleChallengePageProps {
   params: {
@@ -8,8 +7,6 @@ interface SingleChallengePageProps {
   };
 }
 const SingleChallengePage = async ({ params }: SingleChallengePageProps) => {
-  const supabase = createClient();
-
   const data = await getChallengeById(params.challengeId);
 
   if (!data) return null;

@@ -14,7 +14,6 @@ import { modalStore } from "@/lib/store/modal-store";
 import { createClient } from "@/utils/supabase/client";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Provider } from "@supabase/supabase-js";
 import { useToast } from "@/hooks/use-toast";
 
 const AuthModal = () => {

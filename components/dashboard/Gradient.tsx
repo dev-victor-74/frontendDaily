@@ -19,7 +19,7 @@ const Gradient = () => {
     });
     setColors1(randomHex1);
 
-    const randomHex2 = arr.map((ar) => {
+    const randomHex2 = arr.map((_) => {
       const c = `#${Math.floor(Math.random() * 0xffffff)
         .toString(16)
         .padStart(6, "0")}`;
@@ -35,8 +35,8 @@ const Gradient = () => {
   }, []);
 
   const onCopy = (c1: string, c2: string) => {
-    const gr = `linear-gradient(to right, ${c1}, ${c2})`;
-    navigator.clipboard.writeText(gr);
+    const lgr = `linear-gradient(to right, ${c1}, ${c2})`;
+    navigator?.clipboard?.writeText(lgr);
     setisCopied(true);
 
     setTimeout(() => {

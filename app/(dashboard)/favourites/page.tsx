@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 const FavourPage = async () => {
   const supabase = createClient();
 
-  const { data, error } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
   if (data.user === null) {
     return redirect("/challenges");
   }

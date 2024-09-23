@@ -1,7 +1,7 @@
 import { paystack } from "@/utils/paystack";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export const POST = async (req: NextRequest) => {
+export const POST = async () => {
   try {
     const res = await paystack.transaction.initialize({
       email: "nnamdivictor317@gmail.com",

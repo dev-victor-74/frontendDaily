@@ -18,7 +18,6 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, UploadCloud } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 const AssetModal = () => {
   const { isOpen, onClose, type } = modalStore();
@@ -26,7 +25,6 @@ const AssetModal = () => {
   const open = isOpen && type === "add-asset-modal";
 
   const { toast } = useToast();
-  const router = useRouter();
 
   const handleClose = () => {
     return onClose();
@@ -64,10 +62,7 @@ const AssetModal = () => {
         url: fileUrl,
       };
 
-      const { data, error } = await supabase
-        .from("asset")
-        .insert(assetData)
-        .select();
+      const { data } = await supabase.from("asset").insert(assetData).select();
       if (data?.length) {
         reset();
       }

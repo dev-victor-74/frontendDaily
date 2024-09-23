@@ -69,7 +69,7 @@ interface Subscription {
   id: number;
   email_token: string;
   amount: number;
-  next_payment_date: Date | Number | "" | null;
+  next_payment_date: Date | number | "" | null;
   subscription_code: string;
   status: status;
   createdAt: Date;

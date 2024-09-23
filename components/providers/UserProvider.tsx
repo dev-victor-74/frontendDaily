@@ -50,7 +50,7 @@ const UserProvider = () => {
     }
 
     if (data) {
-      const { data: apilimit, error } = await supabase
+      const { data: apilimit } = await supabase
         .from("user_api_limit")
         .select("*")
         .eq("user_id", data?.id)
