@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import ToolTipProvider from "./ToolTip-Provider";
 import { cn } from "@/lib/utils";
 import LikeButton from "./like-button";
+import { ChallengeModal } from "./challenge-modal";
 
 interface ChallengeCardHeaderProps {
   challenge: Challenges;

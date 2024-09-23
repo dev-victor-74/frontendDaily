@@ -26,8 +26,9 @@ const ChallengeContent = ({
         {data?.map((page: any) => (
           <div
             key={page?.id}
-            className="w-full cursor-pointer p-[1px] rounded-sm ring-1 ring-[#beb2df] flex flex-col gap-2 hover:scale-[1.01] transition"
+            className="w-full cursor-pointer z-10 p-[1px] overflow-hidden relative rounded-sm ring-1 ring-[#beb2df] flex flex-col gap-2 hover:scale-[1.01] transition"
           >
+            <div className=" absolute w-full z-20 h-full top-0 right-0 bg-transparent" />
             <div className="w-full h-[250px] relative rounded-sm overflow-hidden">
               <Image fill src={page?.display_path} alt={page.name} />
             </div>

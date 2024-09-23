@@ -12,7 +12,7 @@ import { ChallengeDataStore, modalStore } from "@/lib/store/modal-store";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import Image from "next/image";
 import { useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 export function ChallengeModal() {
   const { isOpen, onClose, type } = modalStore();
@@ -46,7 +46,7 @@ export function ChallengeModal() {
           </DialogTitle>
           <DialogDescription className="hidden"></DialogDescription>
         </DialogHeader>
-        <div className=" w-full rounded-sm overflow-auto flex items-center justify-center relative">
+        <div className=" w-full rounded-sm z-10 overflow-auto flex items-center justify-center relative">
           <Button
             variant="ghost"
             onClick={prev}
@@ -62,6 +62,7 @@ export function ChallengeModal() {
               alt={challengeData[slideIndex]?.name}
               className=" object-contain mx-auto ring-1 ring-[#d6d3e0]"
             />
+            <div className="top-0 right-0 bottom-0 h-full w-full bg-transparent z-20 sticky" />
           </div>
           <Button
             variant="ghost"
@@ -78,7 +79,7 @@ export function ChallengeModal() {
                 role="button"
                 key={index}
                 onClick={() => setSlideIndex(index)}
-                className={twMerge(
+                className={cn(
                   "w-3 h-3 rounded-full",
                   slideIndex === index ? " bg-[#160a35]" : "bg-slate-600"
                 )}

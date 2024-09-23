@@ -38,7 +38,7 @@ const ChallengeHeading = () => {
         </h2>
         {user?.role === "ADMIN" ? (
           <ToolTipProvider label="Add Challenge">
-            <Button variant="ghost" className="ring-2 ring-[#542cc2] h-7 w-10">
+            <Button variant="ghost" className="ring-2 ring-slate-500 h-7 w-10">
               <Link href="/add">
                 <Plus className="w-4 h-4" />
               </Link>

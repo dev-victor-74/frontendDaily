@@ -30,7 +30,6 @@ const AddChallengePage = () => {
       displayImage: "",
       designImage: "",
       description: "",
-      colors: "",
     },
   });
 
@@ -187,7 +186,7 @@ const AddChallengePage = () => {
               />
             </div>
           </div>
-          <div className="w-full flex flex-col gap-1">
+          {/* <div className="w-full flex flex-col gap-1">
             <label className="text-sm font-bold text-neutral-950">
               Challenge Colors
             </label>
@@ -196,7 +195,7 @@ const AddChallengePage = () => {
               rows={2}
               className="w-full p-1 text-sm rounded-sm ring-1 focus:ring-slate-950 ring-[#a488f1]  font-medium outline-none"
             />
-          </div>
+          </div> */}
           <div className="w-full flex flex-col gap-1">
             <label className="text-sm font-bold text-neutral-950">Tasks</label>
             <textarea
@@ -244,9 +243,9 @@ const AddChallengePage = () => {
             </div>
             <Button
               disabled={loading}
-              variant="ghost"
+              variant="custom"
               type="submit"
-              className={cn("w-full bg-purple-500 hover:bg-purple-400")}
+              className={cn("w-full flex items-center")}
             >
               {loading ? (
                 <div className="w-full flex items-center justify-center gap-2 text-zinc-200">
