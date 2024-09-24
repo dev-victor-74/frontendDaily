@@ -14,7 +14,7 @@ export interface Challenges {
   description: string;
   challenge_pages?: [];
 }
-interface ChallengePages {
+export interface ChallengePages {
   id: string;
   name: string;
   created_at: Date;

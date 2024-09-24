@@ -1,6 +1,5 @@
 "use client";
 
-import { Challenges } from "@/utils/types";
 import DownloadButton from "./DownloadButton";
 
 import { Button } from "../ui/button";

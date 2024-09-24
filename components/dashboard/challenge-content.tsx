@@ -1,9 +1,10 @@
 "use client";
 
+import { ChallengePages } from "@/utils/types";
 import Image from "next/image";
 
 interface ChallengeContentProps {
-  data: any;
+  data: ChallengePages[];
   challengeType: string;
   challengeName: string;
 }
