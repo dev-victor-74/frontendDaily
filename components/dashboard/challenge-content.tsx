@@ -24,7 +24,7 @@ const ChallengeContent = ({
         </h2>
       </div>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2 px-2 pb-3">
-        {data?.map((page: any) => (
+        {data?.map((page) => (
           <div
             key={page?.id}
             className="w-full cursor-pointer z-10 p-[1px] overflow-hidden relative rounded-sm ring-1 ring-[#beb2df] flex flex-col gap-2 hover:scale-[1.01] transition"

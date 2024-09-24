@@ -37,7 +37,7 @@ const LikeButton = ({ challengeId }: FavouriteButtonProps) => {
       }
     };
     getUserDetails();
-  }, [challengeId, user]);
+  }, [challengeId, user, supabase]);
 
   const handleFavourite = async () => {
     setIsFavourite(true);
