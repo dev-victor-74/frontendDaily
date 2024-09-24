@@ -14,6 +14,27 @@ export interface Challenges {
   description: string;
   challenge_pages?: [];
 }
+interface ChallengePages {
+  id: string;
+  name: string;
+  created_at: Date;
+  design_path: string;
+  mobile_path?: string;
+  display_path: string;
+  challenge_id: string;
+}
+export interface SingleChallengeTypes {
+  challenge: Challenges;
+  challenge_pages?: ChallengePages[];
+}
+
+export interface TakenChallengesTypes {
+  id: string;
+  created_at: Date;
+  user_id: string;
+  challenge_id: string;
+  challenges: Challenges;
+}
 
 export interface PageProps {
   id: string;

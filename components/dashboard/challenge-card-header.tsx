@@ -47,7 +47,7 @@ const ChallengeCardHeader = ({
     onAdd({ name: challenge?.name, address: challenge?.designImage });
 
     if (challenge?.challenge_pages?.length) {
-      let pages: PageProps[] = challenge.challenge_pages;
+      const pages: PageProps[] = challenge.challenge_pages;
       for (let i = 0; i < pages.length; i++) {
         onAdd({
           name: pages[i].name,

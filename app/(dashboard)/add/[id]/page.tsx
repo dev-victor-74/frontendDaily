@@ -70,7 +70,7 @@ const SingleAddPage = ({ params: { id } }: SingleAddPageProps) => {
         design_path: designFileUrl,
         challenge_id: id,
       };
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("challenge_pages")
         .insert(challengeData)
         .select();

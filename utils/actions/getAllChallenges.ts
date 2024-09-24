@@ -1,4 +1,5 @@
 import { createClient } from "../supabase/client";
+import { Challenges } from "../types";
 
 export const getAllChallenges = async () => {
   const supabase = createClient();
@@ -11,7 +12,7 @@ export const getAllChallenges = async () => {
     return null;
   }
 
-  return data;
+  return data as Challenges[];
 };
 
 export const getAllAssets = async () => {

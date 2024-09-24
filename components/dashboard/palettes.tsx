@@ -9,7 +9,7 @@ const Palettes = () => {
   const arr = new Array(24).fill(1);
 
   const onGeneratePalettes = () => {
-    const randomHex = arr.map((_) => {
+    const randomHex = arr.map(() => {
       const c = `#${Math.floor(Math.random() * 0xffffff)
         .toString(16)
         .padStart(6, "0")}`;

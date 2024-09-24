@@ -34,7 +34,7 @@ const FavourPage = async () => {
         className="w-full py-2  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4
          mt-5"
       >
-        {challenges?.map((challenge: any) => (
+        {challenges?.map((challenge) => (
           <ChallengeCard
             key={challenge.challenges.id}
             challenge={challenge.challenges}

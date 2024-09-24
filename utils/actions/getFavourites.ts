@@ -1,6 +1,6 @@
 "use server";
 import { createClient } from "../supabase/server";
-import { Challenges } from "../types";
+import { TakenChallengesTypes } from "../types";
 
 export const getFavouriteChallenges = async () => {
   const supabase = createClient();
@@ -12,7 +12,7 @@ export const getFavouriteChallenges = async () => {
     .from("favourites")
     .select("*, challenges(*)")
     .eq("user_id", data.user?.id);
-  return favourites;
+  return favourites as TakenChallengesTypes[];
 };
 
 export const getTakenChallenges = async () => {
@@ -24,5 +24,5 @@ export const getTakenChallenges = async () => {
     .from("projects")
     .select("*, challenges(*)")
     .eq("user_id", data.user?.id);
-  return takenChallenges as Challenges[];
+  return takenChallenges as TakenChallengesTypes[];
 };

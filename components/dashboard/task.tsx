@@ -7,10 +7,15 @@ import { Button } from "../ui/button";
 import { MdCheck } from "react-icons/md";
 
 interface TaskProps {
-  challenge: Challenges;
+  tasks: string;
+  challengeId: string;
+  challengeStatus: string;
+  name: string;
 }
-const Task = ({ challenge }: TaskProps) => {
-  const tasks = challenge?.tasks.split(",");
+const Task = ({ tasks, challengeId, challengeStatus, name }: TaskProps) => {
+  if (!tasks) return null;
+
+  const challengeTasks = tasks.split(",");
 
   return (
     <div className="w-full md:w-[100%] mx-auto gap-2 px-3 p-[5px] pt-2 ring-1 ring-[#c3b3f0] mt-5 rounded-sm flex flex-col">
@@ -18,7 +23,7 @@ const Task = ({ challenge }: TaskProps) => {
         Tasks to Implement
       </h2>
       <div className="w-full flex flex-col gap-2 p- mt-1">
-        {tasks.map((task, index) => (
+        {challengeTasks.map((task, index) => (
           <Button
             key={index}
             variant="ghost"
@@ -69,10 +74,10 @@ const Task = ({ challenge }: TaskProps) => {
       </div>
       <div className="w-full flex items-center justify-center md:justify-end pb-1">
         <DownloadButton
-          tasks={challenge.tasks}
-          challengeId={challenge.id}
-          name={challenge.name}
-          challengeSatus={challenge.status}
+          tasks={tasks}
+          challengeId={challengeId}
+          name={name}
+          challengeSatus={challengeStatus}
         />
       </div>
     </div>

@@ -11,7 +11,7 @@ const Gradient = () => {
   const arr = new Array(24).fill(1);
 
   const onGenerateColors = () => {
-    const randomHex1 = arr.map((ar) => {
+    const randomHex1 = arr.map(() => {
       const c = `#${Math.floor(Math.random() * 0xffffff)
         .toString(16)
         .padStart(6, "0")}`;
@@ -19,7 +19,7 @@ const Gradient = () => {
     });
     setColors1(randomHex1);
 
-    const randomHex2 = arr.map((_) => {
+    const randomHex2 = arr.map(() => {
       const c = `#${Math.floor(Math.random() * 0xffffff)
         .toString(16)
         .padStart(6, "0")}`;
