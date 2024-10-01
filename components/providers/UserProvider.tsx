@@ -68,7 +68,7 @@ const UserProvider = () => {
   };
   useEffect(() => {
     readUserData();
-  }, []);
+  }, [supabase, onLoadSubscription, onLogin]);
 
   return <></>;
 };

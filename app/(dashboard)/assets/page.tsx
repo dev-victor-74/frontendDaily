@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/lib/store/modal-store";
-import { getAllAssets } from "@/utils/actions/getAllChallenges";
+import { getAllAssets } from "@/utils/actions/getAssets";
 import { useQuery } from "@tanstack/react-query";
 import { Download, Search } from "lucide-react";
 import Image from "next/image";

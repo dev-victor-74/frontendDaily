@@ -10,7 +10,7 @@ import {
   favouriteChallenge,
 } from "@/utils/actions/favouritechallenge";
 import { Button } from "../ui/button";
-import { useUser } from "@/lib/store/modal-store";
+import { modalStore, useUser } from "@/lib/store/modal-store";
 
 interface FavouriteButtonProps {
   challengeId: string;
@@ -18,6 +18,8 @@ interface FavouriteButtonProps {
 const LikeButton = ({ challengeId }: FavouriteButtonProps) => {
   const supabase = createClient();
   const [isFavourite, setIsFavourite] = useState(false);
+
+  const { onOpen } = modalStore();
 
   const user = useUser((state) => state.user);
   const { toast } = useToast();
@@ -40,12 +42,14 @@ const LikeButton = ({ challengeId }: FavouriteButtonProps) => {
   }, [challengeId, user, supabase]);
 
   const handleFavourite = async () => {
+    if (!user) return onOpen("auth-modal");
     setIsFavourite(true);
     favouriteChallenge(challengeId, user?.id);
     toast({ description: "Added to favourites" });
   };
 
   const handleUnFavourite = async () => {
+    if (!user) return onOpen("auth-modal");
     setIsFavourite(false);
     deleteChallenge(challengeId, user?.id);
     toast({ description: "Removed from favourites" });

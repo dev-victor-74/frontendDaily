@@ -45,7 +45,7 @@ const Faq = () => {
           </AccordionTrigger>
           <AccordionContent className="text-sm font-semibold text-neutral-800">
             You get access to all the challenges and you can build upto seven
-            premium projects in one month.
+            premium projects monthly.
           </AccordionContent>
         </AccordionItem>
       </Accordion>

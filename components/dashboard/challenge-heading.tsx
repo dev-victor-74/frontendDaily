@@ -24,8 +24,8 @@ const ChallengeHeading = () => {
       return;
     }
 
-    if (!filter) {
-      router.push("/challenge");
+    if (!filter.length) {
+      router.push("/challenges");
       return;
     }
   };
@@ -57,7 +57,8 @@ const ChallengeHeading = () => {
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[280px] bg-slate-50 shadow-md">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
+              {/* 
               <Button
                 variant="outline"
                 className={cn(
@@ -108,14 +109,26 @@ const ChallengeHeading = () => {
                 onClick={() => setFilter("hard")}
               >
                 Hard
-              </Button>
-              <div className="w-full text-sm font-bold text-zinc-900 rounded-sm bg-slate-100 py-2">
+              </Button> */}
+              <div className="w-full text-sm font-bold text-zinc-900 rounded-sm bg-slate-100 py-1">
                 Level
               </div>
               <Button
                 variant="outline"
                 className={cn(
-                  "justify-start w-full px-1 ring-1 rounded-sm bg-white shadow-sm  h-8",
+                  "justify-start w-full px-1 rounded-sm h-10",
+                  filter === "all"
+                    ? "ring-2 ring-[#542cc2] text-[#542cc2]"
+                    : "ring-1 ring-[#7a738a]"
+                )}
+                onClick={() => setFilter("")}
+              >
+                All
+              </Button>
+              <Button
+                variant="outline"
+                className={cn(
+                  "justify-start w-full px-1 ring-1 rounded-sm bg-white shadow-sm  h-10",
                   filter === "beginner"
                     ? "ring-2 ring-[#542cc2] text-[#542cc2]"
                     : " ring-[#7a738a]"
@@ -127,7 +140,7 @@ const ChallengeHeading = () => {
               <Button
                 variant="outline"
                 className={cn(
-                  "justify-start w-full px-1 ring-1 rounded-sm bg-white shadow-sm  h-8",
+                  "justify-start w-full px-1 ring-1 rounded-sm bg-white shadow-sm  h-10",
                   filter === "intermediate"
                     ? " ring-2 ring-[#542cc2] text-[#542cc2]"
                     : " ring-[#7a738a]"
@@ -139,7 +152,7 @@ const ChallengeHeading = () => {
               <Button
                 variant="outline"
                 className={cn(
-                  "justify-start w-full px-1 ring-1 rounded-sm bg-white shadow-sm  h-8",
+                  "justify-start w-full px-1 ring-1 rounded-sm bg-white shadow-sm  h-10",
                   filter === "advanced"
                     ? " ring-2 ring-[#542cc2] text-[#542cc2]"
                     : " ring-[#7a738a]"

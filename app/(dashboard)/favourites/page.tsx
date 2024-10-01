@@ -1,14 +1,22 @@
 import ChallengeCard from "@/components/dashboard/challenge-card";
 import { getFavouriteChallenges } from "@/utils/actions/getFavourites";
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 
 const FavourPage = async () => {
   const supabase = createClient();
 
   const { data } = await supabase.auth.getUser();
   if (data.user === null) {
-    return redirect("/challenges");
+    return (
+      <div className=" w-full items-center justify-center mt-20">
+        <div className=" text-xl md:text-2xl font-semibold md:font-bold text-center text-neutral-800">
+          Looks like you are not logged in
+        </div>
+        <div className=" text-sm font-semibold text-neutral-700 text-center">
+          Sign to view your favourite challenges
+        </div>
+      </div>
+    );
   }
 
   const challenges = await getFavouriteChallenges();

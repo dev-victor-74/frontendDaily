@@ -1,30 +1,29 @@
-import { createClient } from "../supabase/client";
+import { createClient } from "../supabase/server";
 import { Challenges } from "../types";
 
-export const getAllChallenges = async () => {
+export const getAllChallenges = async (filter: string | undefined) => {
   const supabase = createClient();
-  const { data, error } = await supabase
-    .from("challenges")
-    .select("*")
-    .order("created_at", { ascending: false });
 
-  if (error) {
-    return null;
+  if (!filter) {
+    const { data, error } = await supabase
+      .from("challenges")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      return null;
+    }
+    return data as Challenges[];
+  } else {
+    const { data, error } = await supabase
+      .from("challenges")
+      .select("*")
+      .eq("level", filter)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      return null;
+    }
+    return data as Challenges[];
   }
-
-  return data as Challenges[];
-};
-
-export const getAllAssets = async () => {
-  const supabase = createClient();
-  const { data, error } = await supabase
-    .from("asset")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    return null;
-  }
-
-  return data;
 };

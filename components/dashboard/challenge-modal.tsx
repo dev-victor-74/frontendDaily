@@ -39,14 +39,14 @@ export function ChallengeModal() {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-[425px] sm:max-w-[600px] md:max-w-[750px] lg:max-w-[870px] bg-white h-[96vh] p-2 rounded-none">
-        <DialogHeader>
-          <DialogTitle className="text-center font-semibold mt-4 p-0">
+      <DialogContent className="max-w-[425px] sm:max-w-[600px] md:max-w-[750px] lg:max-w-[950px] bg-white h-[85vh] rounded-none">
+        <DialogHeader className=" h-8">
+          <DialogTitle className="text-center font-bold mt-4 p-0">
             {challengeData[slideIndex]?.name}
           </DialogTitle>
           <DialogDescription className="hidden"></DialogDescription>
         </DialogHeader>
-        <div className=" w-full rounded-sm z-10 overflow-auto flex items-center justify-center relative">
+        <div className=" w-full rounded-sm z-10 overflow-hidden flex items-center justify-center relative">
           <Button
             variant="ghost"
             onClick={prev}
@@ -54,10 +54,10 @@ export function ChallengeModal() {
           >
             <IoIosArrowRoundBack size={28} />
           </Button>
-          <div className="w-[800px] mx-auto relative h-[300px] md:h-[450px] overflow-auto rounded-sm ring-1 ring-slate-50">
+          <div className="w-[850px] mx-auto relative h-[300px] md:h-[450px] overflow-auto rounded-sm ring-1 pt-12 ring-slate-50">
             <Image
               height={700}
-              width={760}
+              width={800}
               src={challengeData[slideIndex]?.address}
               alt={challengeData[slideIndex]?.name}
               className=" object-contain mx-auto ring-1 ring-[#d6d3e0]"

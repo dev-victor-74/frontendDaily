@@ -1,14 +1,22 @@
 import TakenChallenges from "@/components/dashboard/TakenChallenges";
 import { createClient } from "@/utils/supabase/server";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 
 const ProfilePage = async () => {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
 
   if (!data.user) {
-    return redirect("/challenges");
+    return (
+      <div className=" w-full items-center justify-center mt-20">
+        <div className=" text-xl md:text-2xl font-semibold md:font-bold text-center text-neutral-800">
+          Looks like you are not logged in
+        </div>
+        <div className=" text-sm font-semibold text-neutral-700 text-center">
+          Sign to view your profile
+        </div>
+      </div>
+    );
   }
 
   return (
