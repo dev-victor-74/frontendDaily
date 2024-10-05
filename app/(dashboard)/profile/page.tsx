@@ -20,7 +20,7 @@ const ProfilePage = async () => {
   }
 
   return (
-    <main className="w-full h-full px-2 md:px-4">
+    <main className="w-full h-full px-1 md:px-2">
       <div className="w-full flex  flex-col gap-3 mt-5 items-center justify-center">
         <div className="flex items-center gap-2">
           <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#703cff] relative">

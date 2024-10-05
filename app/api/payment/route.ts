@@ -1,10 +1,19 @@
 import { paystack } from "@/utils/paystack";
+import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 
 export const POST = async () => {
+  const supabase = createClient();
+
+  const user = await supabase.auth.getUser();
+
+  if (!user.data.user?.email) {
+    return NextResponse.json("Missing Fields", { status: 404 });
+  }
+
   try {
     const res = await paystack.transaction.initialize({
-      email: "nnamdivictor317@gmail.com",
+      email: user.data.user?.email,
       amount: "1500",
       plan: process.env.PAYSTACK_PLAN_CODE,
       channels: ["card"],

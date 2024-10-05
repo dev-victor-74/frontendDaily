@@ -15,7 +15,7 @@ const MatketingLayout = async ({ children }: layoutProps) => {
   }
 
   return (
-    <div className="w-full h-full px-6 md:w-[95%] mx-auto">
+    <div className="w-full h-full px-2 md:px-6 md:w-[95%] mx-auto">
       <Navbar />
       {children}
       <Footer />

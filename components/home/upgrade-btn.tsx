@@ -18,7 +18,7 @@ const UpgradeBtn = () => {
       }
     } catch (error) {
       toast({
-        title: "error",
+        title: "error initialising payment",
       });
     }
   };

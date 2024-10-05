@@ -6,7 +6,7 @@ const PrivacyPolicyPage = () => {
   const router = useRouter();
 
   return (
-    <main className="w-full h-full px-4 py-8">
+    <main className="w-full h-full px-2 py-8">
       <div className="w-full relative">
         <div className="w-full relative">
           <div className=" absolute top-5 cursor-pointer left-2 bg-slate-200 rounded-full hover:bg-slate-300 p-2">

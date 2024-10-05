@@ -11,11 +11,11 @@ const UserProvider = () => {
   const { onLoadSubscription } = UseSubscription();
   const supabase = createClient();
 
-  const loadUserSubscription = async (code: string) => {
+  const loadUserSubscription = async (userId: string) => {
     try {
       const response = await fetch("/api/getUserSub", {
         method: "post",
-        body: JSON.stringify(code),
+        body: JSON.stringify(userId),
       });
       const data = await response.json();
 
@@ -46,7 +46,7 @@ const UserProvider = () => {
     onLogin(data);
 
     if (data?.customer) {
-      await loadUserSubscription(data.customer.customer_code);
+      await loadUserSubscription(data.id);
     }
 
     if (data) {

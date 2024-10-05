@@ -41,7 +41,9 @@ const ProModal = () => {
       <DialogContent className="max-w-[425px] sm:max-w-[450px] md:max-w-[500px] lg:max-w-[500px] bg-white p-3 rounded-none">
         <DialogHeader>
           <DialogTitle className="text-center font-semibold"></DialogTitle>
-          <DialogDescription className=" flex items-center justify-center flex-col">
+          <DialogDescription className=" hidden"></DialogDescription>
+
+          <div className="w-full flex items-center justify-between flex-col">
             <div className=" w-[100px] h-[100px] relative mx-auto">
               <Image src="/upgrade.svg" alt="upgrade" fill />
             </div>
@@ -65,7 +67,7 @@ const ProModal = () => {
                 challenges every month
               </div>
             </div>
-          </DialogDescription>
+          </div>
         </DialogHeader>
         <div className=" w-full rounded-sm flex items-center justify-center flex-col gap-2 px-2">
           <div className="w-full flex  flex-col gap-2">

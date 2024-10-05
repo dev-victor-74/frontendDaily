@@ -34,7 +34,7 @@ const TermsOfServicePage = () => {
   const router = useRouter();
 
   return (
-    <main className="w-full h-full px-4 py-5">
+    <main className="w-full h-full px-2 py-5">
       <div className="w-full relative">
         <div className=" absolute top-5 cursor-pointer left-2 bg-purple-300 rounded-full hover:bg-purple-200 p-2">
           <MoveLeft size={18} className="" onClick={() => router.back()} />

@@ -24,5 +24,6 @@ export const createCustomer = async () => {
   await supabase.from("customer").insert({
     id: data.user?.id,
     customer_code: result.data?.customer_code,
+    customer_id: result.data?.id,
   });
 };
