@@ -1,5 +1,6 @@
 "use client";
 
+import { _30_DAYS_IN_MILLISECONDS } from "@/lib/constants";
 import { useUser, UseSubscription } from "@/lib/store/modal-store";
 import { ResetApiLimit } from "@/utils/actions/apilimit";
 import { getUser } from "@/utils/actions/getUser";
@@ -29,6 +30,13 @@ const UserProvider = () => {
         createdAt,
       } = data.data[0];
 
+      const isPremium =
+        (status === "active" &&
+          new Date(next_payment_date as string).getTime() > Date.now()) ||
+        ((status === "cancelled" || status === "non-renewing") &&
+          new Date().getTime() - new Date(createdAt).getTime() <=
+            _30_DAYS_IN_MILLISECONDS);
+
       onLoadSubscription({
         id,
         email_token,
@@ -36,6 +44,7 @@ const UserProvider = () => {
         next_payment_date,
         subscription_code,
         status,
+        isPremium,
         createdAt,
       });
     } catch (error) {}

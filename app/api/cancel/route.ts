@@ -6,12 +6,16 @@ export const POST = async (req: NextRequest) => {
   if (!body.code || !body.email_token)
     return NextResponse.json("Missing Fields", { status: 404 });
   try {
-    const res = await paystack.subscription.disable({
-      token: body.email_token,
-      code: body.code,
-    });
+    const res1 = await paystack.subscription.generateSubscriptionLink(
+      body.code
+    );
 
-    return NextResponse.json(res, { status: 200 });
+    // const res = await paystack.subscription.disable({
+    //   code: body.code,
+    //   token: body.email_token,
+    // });
+
+    return NextResponse.json(res1, { status: 200 });
   } catch (error) {
     console.log(error);
     return NextResponse.json(error, { status: 500 });

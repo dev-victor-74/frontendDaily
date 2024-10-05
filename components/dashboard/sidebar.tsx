@@ -2,8 +2,8 @@
 
 import { CircleUser, Palette, SquareKanban, Zap } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiImages } from "react-icons/bi";
@@ -22,6 +22,7 @@ const Sidebar = ({ count }: { count: number }) => {
   const { onOpen } = modalStore();
   const { subscription } = UseSubscription();
   const { user } = useUser();
+  const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
   const isPro =
@@ -63,21 +64,20 @@ const Sidebar = ({ count }: { count: number }) => {
     },
   ];
 
-  const router = useRouter();
-
   const onCancelSubscription = async () => {
-    if (
-      subscription?.status === "cancelled" ||
-      subscription?.status === "non-renewing"
-    ) {
-      return toast({
-        description: (
-          <p className="text-sm font-semibold text-orange-900">
-            You have already cancelled your subscription
-          </p>
-        ),
-      });
-    }
+    setLoading(true);
+    // if (
+    //   subscription?.status === "cancelled" ||
+    //   subscription?.status === "non-renewing"
+    // ) {
+    //   return toast({
+    //     description: (
+    //       <p className="text-sm font-semibold text-orange-900">
+    //         You have already cancelled your subscription
+    //       </p>
+    //     ),
+    //   });
+    // }
     if (!user?.email || !subscription?.subscription_code) {
       onOpen("auth-modal");
       return;
@@ -94,17 +94,15 @@ const Sidebar = ({ count }: { count: number }) => {
         body: JSON.stringify(data),
       });
       const response = await res.json();
-      console.log(response);
-      toast({
-        title: "You have succesfully cancelled your subscription",
-      });
+      window.location.href = response.data.link;
     } catch (error) {
       toast({
         title: "could not complete request",
       });
     } finally {
-      router.refresh();
-      window.location && window.location.reload();
+      // router.refresh();
+      // window.location && window.location.reload();
+      setLoading(false);
     }
   };
 
@@ -150,22 +148,26 @@ const Sidebar = ({ count }: { count: number }) => {
         ))}
       </div>
       <div className="mt-auto w-full p-2 ring-1 shadow-sm ring-[#d9d9db] rounded-sm bg-slate-50 flex flex-col gap-1">
-        {user && isPro ? (
+        {user && subscription?.isPremium ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
             {count ? count : 0} / {PRO_MAX_API_LIMIT_COUNT}
           </p>
-        ) : user && !isPro ? (
+        ) : user && !subscription?.isPremium ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
             {count ? count : 0} / {FREE_MAX_API_LIMIT_COUNT}
           </p>
         ) : (
           ""
         )}
-        {isPro ? (
+        {subscription?.isPremium ? (
           <Button
             onClick={onCancelSubscription}
             variant="custom"
-            className="flex text-xs tracking-wide items-center gap-1 rounded-sm"
+            className={cn(
+              "flex text-xs tracking-wide items-center gap-1 rounded-sm",
+              loading && "bg-[#9279d8]"
+            )}
+            disabled={loading}
           >
             {user ? "Cancel subscription" : "Go Premium"}
           </Button>

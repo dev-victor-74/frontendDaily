@@ -1,17 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-#home {
-  background-color: #c399ff;
-  background-image: radial-gradient(
-      at 27% 47%,
-      hsla(314, 64%, 76%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 63% 5%, hsla(297, 96%, 69%, 1) 0px, transparent 50%),
-    radial-gradient(at 86% 48%, hsla(241, 84%, 66%, 1) 0px, transparent 50%);
-} */
 
 @layer base {
   :root {

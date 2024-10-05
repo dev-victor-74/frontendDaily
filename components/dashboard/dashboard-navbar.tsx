@@ -47,15 +47,15 @@ const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
     }
   };
 
-  const isPro =
-    (subscription &&
-      subscription.status === "active" &&
-      new Date(subscription.next_payment_date as string).getTime() >
-        Date.now()) ||
-    ((subscription?.status === "cancelled" ||
-      subscription?.status === "non-renewing") &&
-      new Date().getTime() - new Date(subscription.createdAt).getTime() <=
-        _30_DAYS_IN_MILLISECONDS);
+  // const isPro =
+  //   (subscription &&
+  //     subscription.status === "active" &&
+  //     new Date(subscription.next_payment_date as string).getTime() >
+  //       Date.now()) ||
+  //   ((subscription?.status === "cancelled" ||
+  //     subscription?.status === "non-renewing") &&
+  //     new Date().getTime() - new Date(subscription.createdAt).getTime() <=
+  //       _30_DAYS_IN_MILLISECONDS);
 
   return (
     <div className="w-full h-[55px] py-2 border-b border-[#e5e1f0] flex items-center justify-between">
@@ -64,7 +64,7 @@ const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
       </div>
 
       <div className="w-full flex items-center justify-end md:px-1">
-        {isPro && user ? (
+        {subscription?.isPremium && user ? (
           <div className=" flex items-center justify-center mr-2">
             <PremiumBadge />
           </div>

@@ -97,7 +97,7 @@ const AuthModal = () => {
                     <span>Github</span>
                   </div>
                 </Button>
-                <Button
+                {/* <Button
                   onClick={signInWithGoogle}
                   variant="outline"
                   className="w-full ring-1 rounded-sm ring-[#a69cfd]"
@@ -106,7 +106,7 @@ const AuthModal = () => {
                     <FcGoogle size={24} />
                     <span>Google</span>
                   </div>
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>

@@ -59,10 +59,10 @@ const ChallengeCardHeader = ({
   }, [challengeId]);
 
   return (
-    <div className="w-full md:w-[100%] mx-auto flex flex-col md:flex-row items-center gap-2 p-[2px] ring-1 ring-[#c3b3f0] mt-5 rounded-sm">
-      <div className="w-full md:w-[55%] flex items-center justify-center p-2">
+    <div className="w-full md:w-[100%] mx-auto flex pb-5 flex-col md:flex-row items-center gap-2 p-[2px] ring-1 ring-[#c3b3f0] mt-5 rounded-sm">
+      <div className="w-full md:w-[55%] flex items-center justify-center p-[5px]">
         <div className="w-full relative h-[300px] sm:h-[400px] md:h-[400px] rounded-sm overflow-hidden ring-1 ring-slate-300">
-          <div className=" absolute h-[300px] sm:h-[400px] md:h-[400px] w-full top-0 right-0 z-30 bg-transparent"></div>
+          <div className=" absolute h-[300px] sm:h-[400px] md:h-[425px] w-full top-0 right-0 z-30 bg-transparent"></div>
           <Image
             fill
             src={challenge?.displayImage}
@@ -87,7 +87,7 @@ const ChallengeCardHeader = ({
             <Button
               variant="custom"
               className={cn(
-                "text-xs h-max font-semibold rounded-md",
+                "text-xs h-max font-semibold rounded-sm capitalize",
                 challenge?.status.toLocaleLowerCase() === "premium"
                   ? " bg-orange-500"
                   : "bg-[#675eec]"
@@ -100,10 +100,10 @@ const ChallengeCardHeader = ({
           <h2 className="text-sm font-extrabold text-zinc-900 truncate">
             {challenge?.name}
           </h2>
-          <div className="w-full text-justify text-[14px] font-medium text-zinc-800">
+          <div className="w-full text-start text-[14px] font-medium text-zinc-800">
             {challenge?.description}
           </div>
-          <div className="w-full text-justify text-[14px] font-medium flex flex-col gap-1 text-zinc-800">
+          <div className="w-full text-start text-[14px] font-medium flex flex-col gap-1 text-zinc-800">
             <p>
               Begin by transforming this design into a fully functional project
               using HTML, CSS, and JavaScript, or any framework of your choice.
@@ -111,7 +111,7 @@ const ChallengeCardHeader = ({
               seamlessly into a working interface.
             </p>
           </div>
-          <div className="w-full mt-5">
+          <div className="w-full mt-2">
             <ButtonColorMap challenge={challenge} />
           </div>
         </div>

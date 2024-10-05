@@ -129,7 +129,7 @@ const AddChallengePage = () => {
                 required
                 {...register("type", { required: true })}
                 type="text"
-                placeholder="single page | multi page"
+                placeholder="singlepage | multipage | multicard"
                 className="text-sm ring-1 ring-[#a488f1]  font-medium outline-none"
               />
             </div>

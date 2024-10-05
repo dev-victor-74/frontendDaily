@@ -71,6 +71,7 @@ interface Subscription {
   amount: number;
   next_payment_date: Date | number | "" | null;
   subscription_code: string;
+  isPremium: boolean;
   status: status;
   createdAt: Date;
 }

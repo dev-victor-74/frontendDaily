@@ -10,8 +10,8 @@ interface ColorMapProps {
 const ButtonColorMap = ({ challenge }: ColorMapProps) => {
   if (!challenge) return;
   return (
-    <div className="w-full flex items-center justify-between mt-2 ">
-      <div className="flex items-center flex-wrap gap-2">
+    <div className="w-full flex items-center flex-wrap gap-2 justify-between mt-1">
+      <div className="flex items-center gap-2">
         <div
           className={twMerge(
             "w-max py-[2px] px-1  font-semibold rounded-[2px] text-center text-xs ring-1 ring-[#a789f8] text-zinc-200",

@@ -6,7 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const Hero = () => {
   return (
-    <div className="w-full md:w-[90%] lg:w-[70%] mx-auto flex flex-col gap-3 md:gap-5 mt-8 md:mt-16 items-center justify-center px-2 md:px-8">
+    <div className="w-full  md:w-[90%] lg:w-[70%] mx-auto flex flex-col gap-3 md:gap-5 mt-8 md:mt-16 items-center justify-center px-2 md:px-8">
       <div className="w-max px-4 py-3 flex items-center gap-3 rounded-full shadow-xl text-sm font-semibold mt-5">
         FrontendDaily is now live!
         <div className="w-[25px] h-[25px] relative ">

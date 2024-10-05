@@ -35,11 +35,10 @@ export default async function Home() {
     <main
       id="home"
       className="
-       w-full 
     "
     >
       <Hero />
-      <div className="w-full px-1 md:w-[90%] lg:w-[85%] mt-5 md:mt-10 mx-auto flex flex-col gap-4">
+      <div className="w-full px-1 md:w-[90%] lg:w-[85%] mt-5 md:mt-10 mx-auto flex flex-col gap-4 ">
         <div className="w-full md:w-[60%] mx-auto">
           <h1 className=" text-2xl font-bold md:text-4xl md:font-extrabold text-center text-zinc-900">
             Boost your coding skill by building real life challenges
