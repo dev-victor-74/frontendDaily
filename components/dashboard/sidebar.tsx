@@ -10,7 +10,6 @@ import { BiImages } from "react-icons/bi";
 import { Button } from "../ui/button";
 import { modalStore, UseSubscription, useUser } from "@/lib/store/modal-store";
 import {
-  _30_DAYS_IN_MILLISECONDS,
   FREE_MAX_API_LIMIT_COUNT,
   PRO_MAX_API_LIMIT_COUNT,
 } from "@/lib/constants";
@@ -25,15 +24,6 @@ const Sidebar = ({ count }: { count: number }) => {
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
-  const isPro =
-    (subscription &&
-      subscription.status === "active" &&
-      new Date(subscription.next_payment_date as string).getTime() >
-        Date.now()) ||
-    ((subscription?.status === "cancelled" ||
-      subscription?.status === "non-renewing") &&
-      new Date().getTime() - new Date(subscription.createdAt).getTime() <=
-        _30_DAYS_IN_MILLISECONDS);
 
   const routes = [
     {
@@ -113,12 +103,6 @@ const Sidebar = ({ count }: { count: number }) => {
 
     return onOpen("pro-modal");
   };
-
-  // console.log(
-  //   new Date().getTime() - new Date(subscription?.createdAt).getTime() >=
-  //     _30_DAYS_IN_MILLISECONDS,
-  //   new Date(subscription?.createdAt).getDate()
-  // );
 
   return (
     <div className="w-full h-full flex flex-col px-2 bg-white">

@@ -16,7 +16,6 @@ import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { modalStore, UseSubscription, useUser } from "@/lib/store/modal-store";
 import { useToast } from "@/hooks/use-toast";
-import { _30_DAYS_IN_MILLISECONDS } from "@/lib/constants";
 import PremiumBadge from "./premium-badge";
 
 interface dashboardNavbarProps {
@@ -46,16 +45,6 @@ const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
       router.refresh();
     }
   };
-
-  // const isPro =
-  //   (subscription &&
-  //     subscription.status === "active" &&
-  //     new Date(subscription.next_payment_date as string).getTime() >
-  //       Date.now()) ||
-  //   ((subscription?.status === "cancelled" ||
-  //     subscription?.status === "non-renewing") &&
-  //     new Date().getTime() - new Date(subscription.createdAt).getTime() <=
-  //       _30_DAYS_IN_MILLISECONDS);
 
   return (
     <div className="w-full h-[55px] py-2 border-b border-[#e5e1f0] flex items-center justify-between">

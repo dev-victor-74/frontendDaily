@@ -13,7 +13,6 @@ import {
 import { modalStore } from "@/lib/store/modal-store";
 import { createClient } from "@/utils/supabase/client";
 import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { useToast } from "@/hooks/use-toast";
 
 const AuthModal = () => {
@@ -42,23 +41,6 @@ const AuthModal = () => {
         description: "Something went wrong",
       });
     }
-    // handleClose();
-  };
-
-  const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${location.origin}/auth/callback?next=${pathname}`,
-      },
-    });
-
-    if (error) {
-      return toast({
-        description: "Something went wrong",
-      });
-    }
-    // handleClose();
   };
 
   return (
@@ -97,16 +79,6 @@ const AuthModal = () => {
                     <span>Github</span>
                   </div>
                 </Button>
-                {/* <Button
-                  onClick={signInWithGoogle}
-                  variant="outline"
-                  className="w-full ring-1 rounded-sm ring-[#a69cfd]"
-                >
-                  <div className="w-full flex items-center justify-center gap-3">
-                    <FcGoogle size={24} />
-                    <span>Google</span>
-                  </div>
-                </Button> */}
               </div>
             </div>
           </div>
