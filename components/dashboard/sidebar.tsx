@@ -54,20 +54,20 @@ const Sidebar = ({ count }: { count: number }) => {
     },
   ];
 
-  const onCancelSubscription = async () => {
+  const onManageSubscription = async () => {
     setLoading(true);
-    // if (
-    //   subscription?.status === "cancelled" ||
-    //   subscription?.status === "non-renewing"
-    // ) {
-    //   return toast({
-    //     description: (
-    //       <p className="text-sm font-semibold text-orange-900">
-    //         You have already cancelled your subscription
-    //       </p>
-    //     ),
-    //   });
-    // }
+    if (
+      subscription?.status === "cancelled" ||
+      subscription?.status === "non-renewing"
+    ) {
+      return toast({
+        description: (
+          <p className="text-sm font-semibold text-orange-900">
+            You have already cancelled your subscription
+          </p>
+        ),
+      });
+    }
     if (!user?.email || !subscription?.subscription_code) {
       onOpen("auth-modal");
       return;
@@ -90,8 +90,6 @@ const Sidebar = ({ count }: { count: number }) => {
         title: "could not complete request",
       });
     } finally {
-      // router.refresh();
-      // window.location && window.location.reload();
       setLoading(false);
     }
   };
@@ -136,7 +134,7 @@ const Sidebar = ({ count }: { count: number }) => {
           <p className=" text-xs font-semibold text-neutral-950 text-center">
             {count ? count : 0} / {PRO_MAX_API_LIMIT_COUNT}
           </p>
-        ) : user && !subscription?.isPremium ? (
+        ) : !subscription?.isPremium ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
             {count ? count : 0} / {FREE_MAX_API_LIMIT_COUNT}
           </p>
@@ -145,7 +143,7 @@ const Sidebar = ({ count }: { count: number }) => {
         )}
         {subscription?.isPremium ? (
           <Button
-            onClick={onCancelSubscription}
+            onClick={onManageSubscription}
             variant="custom"
             className={cn(
               "flex text-xs tracking-wide items-center gap-1 rounded-sm",

@@ -6,10 +6,10 @@ const Loading = () => {
       <div className="w-full flex items-center justify-center">
         <Image
           src="/loading.png"
-          height={50}
-          width={50}
+          height={30}
+          width={30}
           alt="Loading..."
-          className=" animate-spin"
+          className=" animate-spin "
         />
       </div>
     </div>
