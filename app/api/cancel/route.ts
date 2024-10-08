@@ -3,8 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
-  if (!body.code || !body.email_token)
-    return NextResponse.json("Missing Fields", { status: 404 });
+  if (!body.code) return NextResponse.json("Missing Fields", { status: 404 });
   try {
     const res1 = await paystack.subscription.generateSubscriptionLink(
       body.code

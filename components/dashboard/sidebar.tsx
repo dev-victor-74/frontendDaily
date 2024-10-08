@@ -153,7 +153,7 @@ const Sidebar = ({ count }: { count: number }) => {
             )}
             disabled={loading}
           >
-            {user ? "Cancel subscription" : "Go Premium"}
+            {user ? "Manage subscription" : "Go Premium"}
           </Button>
         ) : (
           <Button

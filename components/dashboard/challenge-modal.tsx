@@ -47,13 +47,15 @@ export function ChallengeModal() {
           <DialogDescription className="hidden"></DialogDescription>
         </DialogHeader>
         <div className=" w-full rounded-sm z-10 overflow-hidden flex items-center justify-center relative">
-          <Button
-            variant="ghost"
-            onClick={prev}
-            className=" fixed z-30 bg-white shadow-md top-1/2 ring-1 ring-[#a199c9] left-[1px] rounded-full"
-          >
-            <IoIosArrowRoundBack size={28} />
-          </Button>
+          {challengeData.length > 1 ? (
+            <Button
+              variant="ghost"
+              onClick={prev}
+              className=" fixed z-30 bg-white shadow-md top-1/2 ring-1 ring-[#a199c9] left-[1px] rounded-full"
+            >
+              <IoIosArrowRoundBack size={28} />
+            </Button>
+          ) : null}
           <div className="w-[850px] mx-auto relative h-[300px] md:h-[450px] overflow-auto rounded-sm ring-1 pt-12 ring-slate-50">
             <Image
               height={700}
@@ -64,28 +66,32 @@ export function ChallengeModal() {
             />
             <div className="top-0 right-0 bottom-0 h-full w-full bg-transparent z-20 sticky" />
           </div>
-          <Button
-            variant="ghost"
-            onClick={next}
-            className=" fixed z-30 bg-white top-1/2 ring-1 shadow-md ring-[#a199c9] right-[1px] rounded-full"
-          >
-            <IoIosArrowRoundForward size={28} />
-          </Button>
+          {challengeData.length > 1 ? (
+            <Button
+              variant="ghost"
+              onClick={next}
+              className=" fixed z-30 bg-white top-1/2 ring-1 shadow-md ring-[#a199c9] right-[1px] rounded-full"
+            >
+              <IoIosArrowRoundForward size={28} />
+            </Button>
+          ) : null}
         </div>
         <DialogFooter className="w-full flex items-center justify-center">
-          <div className="w-full h-3 flex items-center justify-center gap-2">
-            {challengeData.map((data, index) => (
-              <div
-                role="button"
-                key={index}
-                onClick={() => setSlideIndex(index)}
-                className={cn(
-                  "w-3 h-3 rounded-full",
-                  slideIndex === index ? " bg-[#160a35]" : "bg-slate-600"
-                )}
-              />
-            ))}
-          </div>
+          {challengeData.length > 1 ? (
+            <div className="w-full h-3 flex items-center justify-center gap-2">
+              {challengeData.map((data, index) => (
+                <div
+                  role="button"
+                  key={index}
+                  onClick={() => setSlideIndex(index)}
+                  className={cn(
+                    "w-3 h-3 rounded-full",
+                    slideIndex === index ? " bg-[#160a35]" : "bg-slate-600"
+                  )}
+                />
+              ))}
+            </div>
+          ) : null}
         </DialogFooter>
       </DialogContent>
     </Dialog>

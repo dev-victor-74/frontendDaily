@@ -1,22 +1,16 @@
 "use server";
 
-import { createCustomer } from "../createCustomer";
 import { createClient } from "../supabase/server";
 
 const supabase = createClient();
 
-export const getUser = async () => {
-  const { data: user } = await supabase.auth.getUser();
-  if (!user) return null;
-
+export const getUser = async (id: string | undefined) => {
   const { data: dbUser } = await supabase
     .from("user")
-    .select("*, customer(*)")
-    .eq("id", user.user?.id)
+    .select()
+    .eq("id", id)
     .single();
   if (!dbUser) return;
-
-  await createCustomer();
 
   return dbUser;
 };

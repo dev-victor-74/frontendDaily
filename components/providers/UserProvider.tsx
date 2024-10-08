@@ -4,6 +4,7 @@ import { _30_DAYS_IN_MILLISECONDS } from "@/lib/constants";
 import { useUser, UseSubscription } from "@/lib/store/modal-store";
 import { ResetApiLimit } from "@/utils/actions/apilimit";
 import { getUser } from "@/utils/actions/getUser";
+import { getCustomer } from "@/utils/getCustomer";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect } from "react";
 
@@ -19,7 +20,6 @@ const UserProvider = () => {
         body: JSON.stringify(userId),
       });
       const data = await response.json();
-
       const {
         id,
         email_token,
@@ -51,11 +51,13 @@ const UserProvider = () => {
   };
 
   const readUserData = async () => {
-    const data = await getUser();
+    const { data: user } = await supabase.auth.getUser();
+    const data = await getUser(user.user?.id);
+    const customer = await getCustomer();
     onLogin(data);
 
-    if (data?.customer) {
-      await loadUserSubscription(data.id);
+    if (customer) {
+      await loadUserSubscription(customer.customer_id);
     }
 
     if (data) {
