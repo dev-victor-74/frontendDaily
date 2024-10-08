@@ -79,7 +79,7 @@ const UserProvider = () => {
   };
   useEffect(() => {
     readUserData();
-  }, [supabase, onLoadSubscription, onLogin]);
+  }, [supabase, onLoadSubscription, onLogin, readUserData]);
 
   return <></>;
 };
