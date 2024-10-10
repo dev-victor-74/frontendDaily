@@ -14,22 +14,43 @@ import { Button } from "../ui/button";
 
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { modalStore, UseSubscription, useUser } from "@/lib/store/modal-store";
+import { modalStore, useUser } from "@/lib/store/modal-store";
 import { useToast } from "@/hooks/use-toast";
 import PremiumBadge from "./premium-badge";
+import { _30_DAYS_IN_MILLISECONDS } from "@/lib/constants";
 
 interface dashboardNavbarProps {
   user: User | null;
   count: number;
+  email_token: string;
+  next_payment_date: Date | null;
+  subscription_code: string;
+  status: string;
+  createdAt: Date;
 }
 
-const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
-  const { subscription } = UseSubscription();
+const DashboardNavbar = ({
+  user,
+  count,
+  email_token,
+  next_payment_date,
+  subscription_code,
+  status,
+  createdAt,
+}: dashboardNavbarProps) => {
   const supabase = createClient();
   const router = useRouter();
   const { onLogout } = useUser();
   const { onOpen } = modalStore();
   const { toast } = useToast();
+
+  const isPremium =
+    (status &&
+      status === "active" &&
+      new Date(next_payment_date as Date).getTime() > Date.now()) ||
+    ((status === "cancelled" || status === "non-renewing") &&
+      new Date().getTime() - new Date(createdAt).getTime() <=
+        _30_DAYS_IN_MILLISECONDS);
 
   const logout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -49,11 +70,19 @@ const DashboardNavbar = ({ user, count }: dashboardNavbarProps) => {
   return (
     <div className="w-full h-[55px] py-2 border-b border-[#e5e1f0] flex items-center justify-between">
       <div className="w-full flex">
-        <MobileNavbar count={count} />
+        <MobileNavbar
+          count={count}
+          status={status}
+          subscription_code={subscription_code}
+          next_payment_date={next_payment_date}
+          email_token={email_token}
+          user={user}
+          createdAt={createdAt}
+        />
       </div>
 
       <div className="w-full flex items-center justify-end md:px-1">
-        {subscription?.isPremium && user ? (
+        {isPremium && user ? (
           <div className=" flex items-center justify-center mr-2">
             <PremiumBadge />
           </div>

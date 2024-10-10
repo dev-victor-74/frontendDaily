@@ -8,35 +8,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  _30_DAYS_IN_MILLISECONDS,
-  FREE_MAX_API_LIMIT_COUNT,
-  PRO_MAX_API_LIMIT_COUNT,
-} from "@/lib/constants";
 
-import { modalStore, UseSubscription } from "@/lib/store/modal-store";
+import { modalStore } from "@/lib/store/modal-store";
 import { TriangleAlert } from "lucide-react";
 import Image from "next/image";
 
 const ApiLimitModal = () => {
   const { isOpen, onClose, type } = modalStore();
-  const { subscription } = UseSubscription();
 
   const open = isOpen && type === "api-limit-count";
 
   const handleClose = () => {
     return onClose();
   };
-
-  const isPro =
-    (subscription &&
-      subscription.status === "active" &&
-      new Date(subscription.next_payment_date as string).getTime() >
-        Date.now()) ||
-    ((subscription?.status === "cancelled" ||
-      subscription?.status === "non-renewing") &&
-      new Date().getTime() - new Date(subscription.createdAt).getTime() <=
-        _30_DAYS_IN_MILLISECONDS);
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
@@ -58,7 +42,7 @@ const ApiLimitModal = () => {
           <div className=" text-[16px] font-semibold text-zinc-800 text-center">
             You have reached your monthly challenge limit!
           </div>
-          {isPro ? (
+          {/* {isPro ? (
             <div className=" text-xs font-semibold text-zinc-700 text-center">
               {PRO_MAX_API_LIMIT_COUNT} challenges is the maximum you can access
               for a month.
@@ -70,7 +54,7 @@ const ApiLimitModal = () => {
             </div>
           ) : (
             ""
-          )}
+          )} */}
         </div>
         <DialogFooter className="w-full flex items-center justify-center"></DialogFooter>
       </DialogContent>

@@ -14,7 +14,7 @@ export const getCustomer = async () => {
     .eq("id", data.user?.id)
     .single();
 
-  if (!customer) {
+  if (customer === null) {
     const result = await paystack.customer.create({
       email: data.user?.user_metadata.email,
       first_name: data.user?.user_metadata.user_name,
@@ -30,7 +30,16 @@ export const getCustomer = async () => {
       })
       .select()
       .single();
-    return newCustomer;
+    const response = await paystack.subscription.list({
+      customer: newCustomer.customer_id,
+    });
+
+    //@ts-ignore
+    return response.data;
   }
-  return customer;
+  const response = await paystack.subscription.list({
+    customer: customer.customer_id,
+  });
+  //@ts-ignore
+  return response.data;
 };

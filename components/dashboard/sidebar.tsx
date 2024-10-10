@@ -8,19 +8,39 @@ import { cn } from "@/lib/utils";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiImages } from "react-icons/bi";
 import { Button } from "../ui/button";
-import { modalStore, UseSubscription, useUser } from "@/lib/store/modal-store";
+import { modalStore } from "@/lib/store/modal-store";
 import {
+  _30_DAYS_IN_MILLISECONDS,
   FREE_MAX_API_LIMIT_COUNT,
   PRO_MAX_API_LIMIT_COUNT,
 } from "@/lib/constants";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
+import { User } from "@supabase/supabase-js";
 
-const Sidebar = ({ count }: { count: number }) => {
+interface SidebarProps {
+  count: number;
+  email_token: string;
+  next_payment_date: Date | null;
+  subscription_code: string;
+  status: string;
+  createdAt: Date;
+  user: User | null;
+}
+
+const Sidebar = ({
+  email_token,
+  next_payment_date,
+  subscription_code,
+  status,
+  createdAt,
+  count,
+  user,
+}: SidebarProps) => {
   const pathname = usePathname();
   const { onOpen } = modalStore();
-  const { subscription } = UseSubscription();
-  const { user } = useUser();
+  // const { subscription } = UseSubscription();
+  // const { user } = useUser();
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
@@ -53,13 +73,17 @@ const Sidebar = ({ count }: { count: number }) => {
       Icon: CircleUser,
     },
   ];
+  // console.log(status);
+  const isPremium =
+    (status &&
+      status === "active" &&
+      new Date(next_payment_date as Date).getTime() > Date.now()) ||
+    ((status === "cancelled" || status === "non-renewing") &&
+      new Date().getTime() - new Date(createdAt).getTime() <=
+        _30_DAYS_IN_MILLISECONDS);
 
   const onManageSubscription = async () => {
-    setLoading(true);
-    if (
-      subscription?.status === "cancelled" ||
-      subscription?.status === "non-renewing"
-    ) {
+    if (status === "cancelled" || status === "non-renewing") {
       return toast({
         description: (
           <p className="text-sm font-semibold text-orange-900">
@@ -68,17 +92,19 @@ const Sidebar = ({ count }: { count: number }) => {
         ),
       });
     }
-    if (!user?.email || !subscription?.subscription_code) {
+    if (!user?.email || !subscription_code) {
       onOpen("auth-modal");
       return;
     }
 
     const data = {
-      code: subscription?.subscription_code,
-      email_token: subscription?.email_token,
+      code: subscription_code,
+      email_token: email_token,
     };
 
     try {
+      setLoading(true);
+
       const res = await fetch("/api/cancel", {
         method: "post",
         body: JSON.stringify(data),
@@ -130,18 +156,18 @@ const Sidebar = ({ count }: { count: number }) => {
         ))}
       </div>
       <div className="mt-auto w-full p-2 ring-1 shadow-sm ring-[#d9d9db] rounded-sm bg-slate-50 flex flex-col gap-1">
-        {user && subscription?.isPremium ? (
+        {user && isPremium ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
             {count ? count : 0} / {PRO_MAX_API_LIMIT_COUNT}
           </p>
-        ) : !subscription?.isPremium ? (
+        ) : user && !isPremium ? (
           <p className=" text-xs font-semibold text-neutral-950 text-center">
             {count ? count : 0} / {FREE_MAX_API_LIMIT_COUNT}
           </p>
         ) : (
           ""
         )}
-        {subscription?.isPremium ? (
+        {isPremium ? (
           <Button
             onClick={onManageSubscription}
             variant="custom"

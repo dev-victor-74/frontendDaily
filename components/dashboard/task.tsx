@@ -8,8 +8,19 @@ interface TaskProps {
   challengeId: string;
   challengeStatus: string;
   name: string;
+  status: string;
+  createdAt: Date;
+  next_payment_date: Date | null;
 }
-const Task = ({ tasks, challengeId, challengeStatus, name }: TaskProps) => {
+const Task = ({
+  tasks,
+  challengeId,
+  challengeStatus,
+  name,
+  status,
+  createdAt,
+  next_payment_date,
+}: TaskProps) => {
   if (!tasks) return null;
 
   return (
@@ -51,6 +62,9 @@ const Task = ({ tasks, challengeId, challengeStatus, name }: TaskProps) => {
           challengeId={challengeId}
           name={name}
           challengeSatus={challengeStatus}
+          status={status}
+          next_payment_date={next_payment_date}
+          createdAt={createdAt}
         />
       </div>
     </div>

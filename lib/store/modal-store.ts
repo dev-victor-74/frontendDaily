@@ -65,7 +65,7 @@ export const useUser = create<userState>((set) => ({
 }));
 
 type status = "free" | "active" | "non-renewing" | "cancelled";
-interface Subscription {
+export interface Subscription {
   id: number;
   email_token: string;
   amount: number;

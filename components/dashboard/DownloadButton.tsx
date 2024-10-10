@@ -30,12 +30,18 @@ interface DownloadButtonProps {
   tasks: string;
   challengeId: string;
   challengeSatus: string;
+  status: string;
+  next_payment_date: Date | null;
+  createdAt: Date;
 }
 const DownloadButton = ({
   name,
   challengeId,
   tasks,
   challengeSatus,
+  status,
+  next_payment_date,
+  createdAt,
 }: DownloadButtonProps) => {
   const { challengeData } = ChallengeDataStore();
   const { subscription } = UseSubscription();
@@ -49,13 +55,11 @@ const DownloadButton = ({
   const [loading, setLoading] = useState(false);
 
   const isPro =
-    (subscription &&
-      subscription.status === "active" &&
-      new Date(subscription.next_payment_date as string).getTime() >
-        Date.now()) ||
-    ((subscription?.status === "cancelled" ||
-      subscription?.status === "non-renewing") &&
-      new Date().getTime() - new Date(subscription.createdAt).getTime() <=
+    (status &&
+      status === "active" &&
+      new Date(next_payment_date as Date).getTime() > Date.now()) ||
+    ((status === "cancelled" || status === "non-renewing") &&
+      new Date().getTime() - new Date(createdAt).getTime() <=
         _30_DAYS_IN_MILLISECONDS);
 
   const validateDownload = async (status: string) => {
@@ -105,6 +109,7 @@ const DownloadButton = ({
       if (isPro && userApiLimit[0].count < PRO_MAX_API_LIMIT_COUNT) {
         await handleDownload();
         await increaseApilimit(user.id, user.email);
+        return;
       }
 
       if (!isPro && userApiLimit[0].count === FREE_MAX_API_LIMIT_COUNT) {
@@ -113,55 +118,8 @@ const DownloadButton = ({
       if (!isPro && userApiLimit[0].count < FREE_MAX_API_LIMIT_COUNT) {
         await handleDownload();
         await increaseApilimit(user.id, user.email);
+        return;
       }
-
-      // if (
-      //   userApiLimit.length &&
-      //   subscription &&
-      //   subscription?.status === "active" &&
-      //   userApiLimit[0].count < MAX_API_LIMIT_COUNT &&
-      //   next_payment_date.getTime() + DAY_IN_MILLISECONDS > Date.now()
-      // ) {
-      //   await increaseApilimit(user.id, user.email);
-      //   await handleDownload();
-
-      //   return;
-      // }
-
-      // if (
-      //   subscription &&
-      //   (subscription?.status === "cancelled" ||
-      //     subscription?.status === "non-renewing") &&
-      //   userApiLimit[0].count < MAX_API_LIMIT_COUNT &&
-      //   new Date().getTime() - new Date(subscription.createdAt).getTime() <=
-      //     _30_DAYS_IN_MILLISECONDS
-      // ) {
-      //   await handleDownload();
-      //   await increaseApilimit(user.id, user.email);
-      //   return;
-      // }
-
-      // if (
-      //   subscription &&
-      //   (subscription?.status === "cancelled" ||
-      //     subscription?.status === "non-renewing") &&
-      //   userApiLimit[0].count < MAX_API_LIMIT_COUNT &&
-      //   new Date().getTime() - new Date(subscription.createdAt).getTime() >=
-      //     _30_DAYS_IN_MILLISECONDS
-      // ) {
-      //   await handleDownload();
-      //   await increaseApilimit(user.id, user.email);
-      //   return;
-      // }
-
-      // if (
-      //   !subscription?.status &&
-      //   userApiLimit[0].count < MAX_API_LIMIT_COUNT
-      // ) {
-      //   await handleDownload();
-      //   await increaseApilimit(user.id, user.email);
-      //   return;
-      // }
     } catch (error) {
       toast({
         title: "Error Trying to access resources!",
