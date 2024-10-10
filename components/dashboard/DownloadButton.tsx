@@ -6,7 +6,6 @@ import { useState } from "react";
 import {
   ChallengeDataStore,
   modalStore,
-  UseSubscription,
   useUser,
 } from "@/lib/store/modal-store";
 import JSZip from "jszip";
@@ -44,7 +43,6 @@ const DownloadButton = ({
   createdAt,
 }: DownloadButtonProps) => {
   const { challengeData } = ChallengeDataStore();
-  const { subscription } = UseSubscription();
   const user = useUser((state) => state.user);
   const { onOpen } = modalStore();
 
