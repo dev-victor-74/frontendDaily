@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import ButtonColorMap from "./button-color-map";
-import Image from "next/image";
+// import Image from "next/image";
 import { ChallengeDataStore, modalStore } from "@/lib/store/modal-store";
 import { Challenges, PageProps } from "@/utils/types";
 import { Expand } from "lucide-react";
@@ -63,11 +63,16 @@ const ChallengeCardHeader = ({
       <div className="w-full md:w-[55%] flex items-center justify-center p-[5px]">
         <div className="w-full relative h-[300px] sm:h-[400px] md:h-[400px] rounded-sm overflow-hidden ring-1 ring-slate-300">
           <div className=" absolute h-[300px] sm:h-[400px] md:h-[425px] w-full top-0 right-0 z-30 bg-transparent"></div>
-          <Image
+          {/* <Image
             fill
             src={challenge?.displayImage}
             alt={challenge?.name}
             className=""
+          /> */}
+          <img
+            src={challenge.displayImage}
+            alt={challenge.name}
+            className="w-full h-full"
           />
           <ToolTipProvider label="Expand">
             <Button

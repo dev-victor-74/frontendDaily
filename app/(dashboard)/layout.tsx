@@ -19,7 +19,7 @@ const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
     subscription_code,
     status,
     createdAt,
-  } = subscription[0];
+  } = subscription;
 
   const { data: apiLimit } = await supabase
     .from("user_api_limit")

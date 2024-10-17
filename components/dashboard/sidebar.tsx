@@ -73,7 +73,6 @@ const Sidebar = ({
       Icon: CircleUser,
     },
   ];
-  // console.log(status);
   const isPremium =
     (status &&
       status === "active" &&

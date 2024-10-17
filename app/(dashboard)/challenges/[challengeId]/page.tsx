@@ -11,7 +11,7 @@ const SingleChallengePage = async ({ params }: SingleChallengePageProps) => {
   const data = await getChallengeById(params.challengeId);
 
   const subscription = await getCustomer();
-  const { next_payment_date, status, createdAt } = subscription[0];
+  const { next_payment_date, status, createdAt } = subscription;
 
   if (!data) return null;
 

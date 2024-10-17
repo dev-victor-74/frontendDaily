@@ -6,7 +6,7 @@ export const getCustomer = async () => {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
 
-  if (!data) throw new Error("Unauthorized!");
+  if (!data.user) return {};
 
   const { data: customer } = await supabase
     .from("customer")
@@ -30,16 +30,18 @@ export const getCustomer = async () => {
       })
       .select()
       .single();
-    const response = await paystack.subscription.list({
-      customer: newCustomer.customer_id,
-    });
+    if (newCustomer) {
+      const response = await paystack.subscription.list({
+        customer: newCustomer.customer_id,
+      });
 
-    //@ts-ignore
-    return response.data;
+      //@ts-ignore
+      return response.data[0];
+    }
   }
   const response = await paystack.subscription.list({
     customer: customer.customer_id,
   });
   //@ts-ignore
-  return response.data;
+  return response.data[0];
 };

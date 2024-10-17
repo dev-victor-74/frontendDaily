@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import { Challenges } from "@/utils/types";
-import Image from "next/image";
+// import Image from "next/image";
 import ButtonColorMap from "./button-color-map";
 import LikeButton from "./like-button";
 import { cn } from "@/lib/utils";
@@ -36,10 +36,15 @@ const ChallengeCard = ({ challenge }: ChallengeCardProps) => {
                     : "Free"}
                 </div>
                 <div className=" absolute h-[270px] w-[350px] bg-transparent z-30" />
-                <Image
+                {/* <Image
                   fill
                   src={challenge?.displayImage}
                   alt={challenge?.name}
+                /> */}
+                <img
+                  src={challenge.displayImage}
+                  alt={challenge.name}
+                  className="w-full h-full"
                 />
               </div>
             </Link>
