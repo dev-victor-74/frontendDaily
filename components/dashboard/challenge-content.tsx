@@ -1,7 +1,7 @@
 "use client";
 
 import { ChallengePages } from "@/utils/types";
-import Image from "next/image";
+// import Image from "next/image";
 
 interface ChallengeContentProps {
   data: ChallengePages[];
@@ -31,10 +31,16 @@ const ChallengeContent = ({
           >
             <div className=" absolute w-full z-20 h-full top-0 right-0 bg-transparent" />
             <div className="w-full h-[250px] relative rounded-sm overflow-hidden">
-              <Image fill src={page?.display_path} alt={page.name} />
+              {/* <Image fill src={page?.display_path} alt={page.name} /> */}
+              <img
+                src={page?.display_path}
+                alt={page.name}
+                className="w-full h-full object-contain"
+              />
             </div>
+
             <div className="text-sm font-semibold text-zinc-800 px-2 truncate">
-              {page?.name}
+              {challengeType.toLowerCase() === "multipage" ? page?.name : ""}
             </div>
           </div>
         ))}

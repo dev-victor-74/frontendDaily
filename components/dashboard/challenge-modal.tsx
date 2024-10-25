@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { ChallengeDataStore, modalStore } from "@/lib/store/modal-store";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
-import Image from "next/image";
+// import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +39,7 @@ export function ChallengeModal() {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-[425px] sm:max-w-[600px] md:max-w-[750px] lg:max-w-[950px] bg-white h-[85vh] rounded-none">
+      <DialogContent className="max-w-[425px] sm:max-w-[600px] md:max-w-[750px] lg:max-w-[950px] bg-white h-[70vh] md:h-[85vh] rounded-none">
         <DialogHeader className=" h-8">
           <DialogTitle className="text-center font-bold mt-4 p-0">
             {challengeData[slideIndex]?.name}
@@ -56,13 +56,18 @@ export function ChallengeModal() {
               <IoIosArrowRoundBack size={28} />
             </Button>
           ) : null}
-          <div className="w-[850px] mx-auto relative h-[300px] md:h-[450px] overflow-auto rounded-sm ring-1 pt-12 ring-slate-50">
-            <Image
+          <div className="w-[850px] px-2 mx-auto relative h-[300px] md:h-[450px] overflow-auto rounded-sm ring-1 pt-12 ring-slate-50">
+            {/* <Image
               height={700}
               width={800}
               src={challengeData[slideIndex]?.address}
               alt={challengeData[slideIndex]?.name}
               className=" object-contain mx-auto ring-1 ring-[#d6d3e0]"
+            /> */}
+            <img
+              src={challengeData[slideIndex]?.address}
+              alt={challengeData[slideIndex]?.name}
+              className="w-full object-contain ring-1 ring-[#cac8d4]"
             />
             <div className="top-0 right-0 bottom-0 h-full w-full bg-transparent z-20 sticky" />
           </div>
