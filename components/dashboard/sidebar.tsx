@@ -3,12 +3,12 @@
 import { CircleUser, Palette, SquareKanban, Zap } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiImages } from "react-icons/bi";
 import { Button } from "../ui/button";
-import { modalStore } from "@/lib/store/modal-store";
+import { DbUser, modalStore, useUser } from "@/lib/store/modal-store";
 import {
   _30_DAYS_IN_MILLISECONDS,
   FREE_MAX_API_LIMIT_COUNT,
@@ -26,6 +26,7 @@ interface SidebarProps {
   status: string;
   createdAt: Date;
   user: User | null;
+  dBuser: DbUser;
 }
 
 const Sidebar = ({
@@ -36,14 +37,21 @@ const Sidebar = ({
   createdAt,
   count,
   user,
+  dBuser,
 }: SidebarProps) => {
   const pathname = usePathname();
   const { onOpen } = modalStore();
+  const { onLogin } = useUser();
+
   // const { subscription } = UseSubscription();
   // const { user } = useUser();
   const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
+
+  useEffect(() => {
+    onLogin(dBuser);
+  }, [onLogin]);
 
   const routes = [
     {

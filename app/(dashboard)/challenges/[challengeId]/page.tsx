@@ -9,6 +9,7 @@ interface SingleChallengePageProps {
 }
 const SingleChallengePage = async ({ params }: SingleChallengePageProps) => {
   const data = await getChallengeById(params.challengeId);
+  // const data;
 
   const subscription = await getCustomer();
   const { next_payment_date, status, createdAt } = subscription;

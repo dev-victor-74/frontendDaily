@@ -1,5 +1,6 @@
 import DashboardNavbar from "@/components/dashboard/dashboard-navbar";
 import Sidebar from "@/components/dashboard/sidebar";
+import { getUser } from "@/utils/actions/getUser";
 import { getCustomer } from "@/utils/getCustomer";
 import { createClient } from "@/utils/supabase/server";
 
@@ -12,6 +13,8 @@ interface dashboardLayoutProps {
 const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
+  const dBuser = await getUser(data.user?.id);
+
   const subscription = await getCustomer();
   const {
     email_token,
@@ -37,6 +40,7 @@ const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
           subscription_code={subscription_code}
           createdAt={createdAt}
           user={data?.user}
+          dBuser={dBuser}
         />
       </div>
       <div className="w-full pl-0 md:pl-[220px] h-screen md:pr-1">

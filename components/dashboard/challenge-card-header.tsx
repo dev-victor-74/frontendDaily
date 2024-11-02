@@ -26,7 +26,11 @@ const ChallengeCardHeader = ({
   const handleOpenChallengeModal = () => {
     onClear();
 
-    onAdd({ name: challenge?.name, address: challenge?.designImage });
+    onAdd({
+      name: challenge?.name,
+      address: challenge?.designImage,
+      mobile: challenge.designImage,
+    });
 
     if (challenge?.challenge_pages?.length) {
       const pages: PageProps[] = challenge.challenge_pages;
@@ -44,7 +48,11 @@ const ChallengeCardHeader = ({
 
   useEffect(() => {
     onClear();
-    onAdd({ name: challenge?.name, address: challenge?.designImage });
+    onAdd({
+      name: challenge?.name,
+      address: challenge?.designImage,
+      mobile: challenge.designImage,
+    });
 
     if (challenge?.challenge_pages?.length) {
       const pages: PageProps[] = challenge.challenge_pages;
@@ -56,7 +64,7 @@ const ChallengeCardHeader = ({
         });
       }
     }
-  }, [challengeId]);
+  }, [challengeId, onClear, onAdd]);
 
   return (
     <div className="w-full md:w-[100%] mx-auto flex pb-5 flex-col md:flex-row items-center gap-2 p-[2px] ring-1 ring-[#c3b3f0] mt-5 rounded-sm">
@@ -73,6 +81,7 @@ const ChallengeCardHeader = ({
             src={challenge.displayImage}
             alt={challenge.name}
             className="w-full h-full"
+            loading="lazy"
           />
           <ToolTipProvider label="Expand">
             <Button

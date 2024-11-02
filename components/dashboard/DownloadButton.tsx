@@ -61,35 +61,37 @@ const DownloadButton = ({
         _30_DAYS_IN_MILLISECONDS);
 
   const validateDownload = async (status: string) => {
-    if (!user) return onOpen("auth-modal");
-
-    if (status.toLowerCase() === "premium" && !isPro) {
-      return onOpen("free-limit-modal");
-    }
-
     const supabase = createClient();
-    const { data, error } = await supabase
-      .from("user_api_limit")
-      .select("*")
-      .eq("user_id", user?.id)
-      .limit(1);
-
-    if (error) {
-      return toast({
-        description:
-          "Something went wrong, please check your internet connections and try again!",
-        variant: "destructive",
-      });
-    }
-
-    if (
-      data.length &&
-      new Date().getMonth() - new Date(data[0].last_reset_date).getMonth() >= 1
-    ) {
-      await ResetApiLimit(user.email);
-    }
-
     try {
+      setLoading(true);
+      if (!user) return onOpen("auth-modal");
+
+      if (status.toLowerCase() === "premium" && !isPro) {
+        return onOpen("free-limit-modal");
+      }
+
+      const { data, error } = await supabase
+        .from("user_api_limit")
+        .select("*")
+        .eq("user_id", user?.id)
+        .limit(1);
+
+      if (error) {
+        return toast({
+          description:
+            "Something went wrong, please check your internet connections and try again!",
+          variant: "destructive",
+        });
+      }
+
+      if (
+        data.length &&
+        new Date().getMonth() - new Date(data[0].last_reset_date).getMonth() >=
+          1
+      ) {
+        await ResetApiLimit(user.email);
+      }
+
       const { data: userApiLimit } = await supabase
         .from("user_api_limit")
         .select("*")
@@ -125,6 +127,7 @@ const DownloadButton = ({
         variant: "destructive",
       });
     } finally {
+      setLoading(false);
       router.refresh();
     }
   };
@@ -144,19 +147,40 @@ const DownloadButton = ({
 
   const handleDownload = async () => {
     try {
-      setLoading(true);
       const zip = new JSZip();
-      const filesfolder = zip.folder("challenge_files");
+      const deskTopFolder = zip.folder("Desktop_Files");
+      const mobileFolder = zip.folder("Mobile_Files");
 
-      const promises = challengeData.map(async (data) => {
+      const firstPromises = challengeData.map(async (data) => {
         const response = await fetch(data.address);
         const blob = await response.blob();
         return blob;
       });
 
-      const blobs = await Promise.all(promises);
-      blobs.forEach((blob, index) => {
-        filesfolder?.file(`${challengeData[index].name}.jpg`, blob);
+      const firstBlobs = await Promise.all(firstPromises);
+      firstBlobs.forEach((blob, index) => {
+        deskTopFolder?.file(
+          `${challengeData[index].name}_${index + 1}.jpg`,
+          blob
+        );
+      });
+
+      const secondPromises = challengeData.map(async (data) => {
+        if (data.mobile) {
+          const response = await fetch(data.mobile);
+          const blob = await response.blob();
+          return blob;
+        }
+      });
+
+      const secondBlobs = await Promise.all(secondPromises);
+      secondBlobs.forEach((blob, index) => {
+        if (blob) {
+          mobileFolder?.file(
+            `${challengeData[index].name}_${index + 1}.jpg`,
+            blob
+          );
+        }
       });
 
       const readMe = zip.folder("readme");
@@ -175,8 +199,6 @@ const DownloadButton = ({
         description: "please try again!",
         variant: "destructive",
       });
-    } finally {
-      setLoading(false);
     }
   };
 
