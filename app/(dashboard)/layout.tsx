@@ -11,7 +11,7 @@ interface dashboardLayoutProps {
 }
 
 const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
   const dBuser = await getUser(data.user?.id);
 
@@ -53,6 +53,7 @@ const DashboardLayout = async ({ children }: dashboardLayoutProps) => {
             status={status}
             subscription_code={subscription_code}
             createdAt={createdAt}
+            dBuser={dBuser}
           />
           {children}
         </div>

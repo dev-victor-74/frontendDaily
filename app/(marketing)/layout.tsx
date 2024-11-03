@@ -7,7 +7,7 @@ interface layoutProps {
   children: React.ReactNode;
 }
 const MatketingLayout = async ({ children }: layoutProps) => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
 
   if (data.user) {

@@ -6,7 +6,7 @@ export const favouriteChallenge = async (
   challengeId: string,
   userId: string | undefined
 ) => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { error } = await supabase.from("favourites").insert({
     user_id: userId,
@@ -23,7 +23,7 @@ export const deleteChallenge = async (
   challengeId: string,
   userId: string | undefined
 ) => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { error } = await supabase
     .from("favourites")
@@ -37,7 +37,7 @@ export const deleteChallenge = async (
 };
 
 export const addTakenChallenge = async (challengeId: string) => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: user } = await supabase.auth.getUser();
   if (!user.user?.id) return;
 

@@ -2,7 +2,7 @@ import { createClient } from "../supabase/server";
 import { Challenges } from "../types";
 
 export const getAllChallenges = async (filter: string | undefined) => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   if (!filter) {
     const { data, error } = await supabase

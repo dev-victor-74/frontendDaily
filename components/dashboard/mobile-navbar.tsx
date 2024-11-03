@@ -9,6 +9,7 @@ import {
 import { Menu } from "lucide-react";
 import Sidebar from "./sidebar";
 import { User } from "@supabase/supabase-js";
+import { DbUser } from "@/lib/store/modal-store";
 
 interface MobileSideBarProps {
   count: number;
@@ -18,6 +19,7 @@ interface MobileSideBarProps {
   status: string;
   createdAt: Date;
   user: User | null;
+  dBuser: DbUser;
 }
 
 const MobileNavbar = ({
@@ -28,6 +30,7 @@ const MobileNavbar = ({
   email_token,
   next_payment_date,
   user,
+  dBuser,
 }: MobileSideBarProps) => {
   return (
     <div className="flex items-center bg-white">
@@ -49,6 +52,7 @@ const MobileNavbar = ({
             email_token={email_token}
             user={user}
             createdAt={createdAt}
+            dBuser={dBuser}
           />
         </SheetContent>
       </Sheet>

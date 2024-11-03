@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 
 import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { modalStore, useUser } from "@/lib/store/modal-store";
+import { DbUser, modalStore, useUser } from "@/lib/store/modal-store";
 import { useToast } from "@/hooks/use-toast";
 import PremiumBadge from "./premium-badge";
 import { _30_DAYS_IN_MILLISECONDS } from "@/lib/constants";
@@ -27,6 +27,7 @@ interface dashboardNavbarProps {
   subscription_code: string;
   status: string;
   createdAt: Date;
+  dBuser: DbUser;
 }
 
 const DashboardNavbar = ({
@@ -37,6 +38,7 @@ const DashboardNavbar = ({
   subscription_code,
   status,
   createdAt,
+  dBuser,
 }: dashboardNavbarProps) => {
   const supabase = createClient();
   const router = useRouter();
@@ -78,6 +80,7 @@ const DashboardNavbar = ({
           email_token={email_token}
           user={user}
           createdAt={createdAt}
+          dBuser={dBuser}
         />
       </div>
 

@@ -2,9 +2,8 @@
 
 import { createClient } from "../supabase/server";
 
-const supabase = createClient();
-
 export const getUser = async (id: string | undefined) => {
+  const supabase = await createClient();
   const { data: dbUser } = await supabase
     .from("user")
     .select()

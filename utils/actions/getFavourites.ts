@@ -3,7 +3,7 @@ import { createClient } from "../supabase/server";
 import { TakenChallengesTypes } from "../types";
 
 export const getFavouriteChallenges = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
 
   if (!data.user) return;
@@ -16,7 +16,7 @@ export const getFavouriteChallenges = async () => {
 };
 
 export const getTakenChallenges = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
   if (!data.user) return;
 

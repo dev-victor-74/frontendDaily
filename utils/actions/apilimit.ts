@@ -2,9 +2,8 @@
 
 import { createClient } from "../supabase/server";
 
-const supabase = createClient();
-
 export const createApiLimit = async (userId: string, email: string) => {
+  const supabase = await createClient();
   const { data: userApiLimit } = await supabase
     .from("user_api_limit")
     .select("*")
@@ -21,6 +20,8 @@ export const createApiLimit = async (userId: string, email: string) => {
 };
 
 export const increaseApilimit = async (userId: string, email: string) => {
+  const supabase = await createClient();
+
   const { data: userApiLimit, error } = await supabase
     .from("user_api_limit")
     .select("*")
@@ -42,6 +43,8 @@ export const increaseApilimit = async (userId: string, email: string) => {
 };
 
 export const ResetApiLimit = async (email: string) => {
+  const supabase = await createClient();
+
   await supabase
     .from("user_api_limit")
     .update({

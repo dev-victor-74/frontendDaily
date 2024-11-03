@@ -3,7 +3,7 @@ import { paystack } from "./paystack";
 import { createClient } from "./supabase/server";
 
 export const getCustomer = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
 
   if (!data.user) return {};
