@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import Image from "next/image";
 
 const ProfilePage = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
 
   if (!data.user) {

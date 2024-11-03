@@ -51,7 +51,7 @@ const Sidebar = ({
 
   useEffect(() => {
     onLogin(dBuser);
-  }, [onLogin]);
+  }, [onLogin, dBuser]);
 
   const routes = [
     {

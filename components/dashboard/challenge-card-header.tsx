@@ -64,7 +64,14 @@ const ChallengeCardHeader = ({
         });
       }
     }
-  }, [challengeId, onClear, onAdd]);
+  }, [
+    challengeId,
+    onClear,
+    onAdd,
+    challenge.challenge_pages,
+    challenge.name,
+    challenge.designImage,
+  ]);
 
   return (
     <div className="w-full md:w-[100%] mx-auto flex pb-5 flex-col md:flex-row items-center gap-2 p-[2px] ring-1 ring-[#c3b3f0] mt-5 rounded-sm">

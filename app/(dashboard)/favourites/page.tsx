@@ -3,7 +3,7 @@ import { getFavouriteChallenges } from "@/utils/actions/getFavourites";
 import { createClient } from "@/utils/supabase/server";
 
 const FavourPage = async () => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data } = await supabase.auth.getUser();
   if (data.user === null) {

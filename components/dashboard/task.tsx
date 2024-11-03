@@ -1,7 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import DownloadButton from "./DownloadButton";
+
+import { FaTasks } from "react-icons/fa";
+import { MdOutlineNotificationImportant } from "react-icons/md";
 
 interface TaskProps {
   tasks: string;
@@ -25,11 +27,9 @@ const Task = ({
 
   return (
     <div className="w-full md:w-[100%] mx-auto gap-2 pb-2 px-3 pt-2 ring-1 ring-[#c3b3f0] mt-5 rounded-sm flex flex-col">
-      <div className="flex items-center gap-2">
-        <div className="w-[50px] h-[45px] relative">
-          <Image src="/task-list.png" alt="reminder" fill />
-        </div>
-        <h2 className=" text-sm font-semibold md:text-lg md:font-bold text-zinc-800 mt-[6px]">
+      <div className="flex items-center gap-2 mt-3">
+        <FaTasks size={20} />
+        <h2 className=" text-sm font-semibold md:text-lg md:font-bold text-zinc-800">
           Tasks to implement
         </h2>
       </div>
@@ -38,9 +38,7 @@ const Task = ({
       </div>
 
       <div className="w-full mt-2 md:mt-5 text-[14px] font-medium text-zinc-900 flex flex-col gap-2">
-        <div className="w-[40px] h-[40px] relative">
-          <Image src="/reminder.png" alt="reminder" fill />
-        </div>
+        <MdOutlineNotificationImportant size={25} />
         <p>
           While it&apos;s important to stay true to the core design, don&apos;t
           get too caught up in achieving pixel-perfect accuracy. Instead,
